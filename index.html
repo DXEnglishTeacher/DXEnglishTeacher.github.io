@@ -6,11 +6,10 @@
   <title>英語教員のDX日誌</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ナビゲーション -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
@@ -29,114 +28,123 @@
     </div>
   </nav>
 
-  <!-- ヒーロー -->
+  <!-- HERO -->
   <section id="home" class="hero">
-    <div class="hero-bg">
-      <div class="hero-grid"></div>
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-    </div>
+    <canvas id="heroCanvas"></canvas>
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          高校英語教員 × DX推進担当
+        <div class="hero-badge reveal">
+          <span class="badge-dot"></span>高校英語教員 × DX推進担当
         </div>
-        <h1 class="hero-title">
+        <h1 class="hero-title reveal reveal-delay-1">
           教室から始める<br>
-          <span class="title-accent">デジタル革新。</span>
+          <span class="title-gradient">デジタル革新。</span>
         </h1>
-        <p class="hero-desc">
-          授業づくり・AI活用・校内改革。<br>
-          成功も失敗も、リアルな記録を発信しています。
-        </p>
-        <div class="hero-actions">
-          <a href="https://note.com/english_dx" target="_blank" class="btn-glow">記事を読む →</a>
-          <a href="#about" class="btn-ghost">プロフィール</a>
+        <p class="hero-typewriter reveal reveal-delay-2" id="typewriterEl"></p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="https://note.com/english_dx" target="_blank" class="btn-primary magnetic">
+            <span>記事を読む</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#about" class="btn-ghost magnetic">プロフィール</a>
         </div>
-        <div class="hero-tags">
-          <span>#英語教育</span>
-          <span>#AI活用</span>
-          <span>#DX推進</span>
-          <span>#iPad授業</span>
+        <div class="hero-tags reveal reveal-delay-4">
+          <span>#英語教育</span><span>#AI活用</span><span>#DX推進</span><span>#iPad授業</span>
         </div>
       </div>
-      <div class="hero-visual">
+      <div class="hero-visual reveal reveal-delay-2">
         <div class="profile-wrap">
-          <div class="profile-ring-outer"></div>
-          <div class="profile-ring-inner"></div>
-          <!-- profile.jpg を用意したら src="profile.jpg" に変更 -->
-          <div class="profile-placeholder" id="profileArea">
-            <span class="profile-initials">DX</span>
+          <svg class="profile-ring-svg" viewBox="0 0 300 300">
+            <circle class="ring-track" cx="150" cy="150" r="140"/>
+            <circle class="ring-progress" cx="150" cy="150" r="140"/>
+          </svg>
+          <div class="profile-photo">
+            <img src="profile.png" alt="プロフィール写真">
           </div>
-          <div class="profile-badge-1">📘 英語教員</div>
-          <div class="profile-badge-2">🤖 AI活用</div>
-          <div class="profile-badge-3">📱 DX推進</div>
+          <div class="float-badge b1"><span>📘</span> 英語教員</div>
+          <div class="float-badge b2"><span>🤖</span> AI活用</div>
+          <div class="float-badge b3"><span>📱</span> DX推進</div>
         </div>
       </div>
     </div>
-    <div class="hero-scroll-hint">
+    <div class="hero-scroll">
       <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <div class="scroll-bar"></div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num" data-target="12">0</span>
+        <span class="stat-unit">本</span>
+        <span class="stat-label">投稿記事</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="2">0</span>
+        <span class="stat-unit">冊</span>
+        <span class="stat-label">マガジン</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="10">0</span>
+        <span class="stat-unit">年+</span>
+        <span class="stat-label">英語教員歴</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="3">0</span>
+        <span class="stat-unit">年目</span>
+        <span class="stat-label">DX推進担当</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <div class="section-label">01 / About</div>
         <h2 class="section-title">私について</h2>
       </div>
       <div class="about-grid">
-        <div class="about-main">
-          <p class="about-lead">
-            高校で英語を教えながら、学校のDX推進も担当しています。
-          </p>
-          <p class="about-body">
-            授業準備へのAI活用、iPadを使った授業実践、校内の業務改善など、
-            教育現場のリアルな取り組みを発信中。<br>
-            成功事例だけでなく、失敗や試行錯誤もそのまま記録しています。
-            同じ課題を抱える教員・教育関係者のヒントになれば嬉しいです。
-          </p>
-          <div class="about-skills">
-            <div class="skill-item">
-              <div class="skill-icon">📘</div>
-              <div class="skill-text">
-                <div class="skill-name">英語教育</div>
-                <div class="skill-desc">高校英語・授業づくり</div>
-              </div>
+        <div class="about-main scroll-reveal">
+          <p class="about-lead">高校で英語を教えながら、<br>学校のDX推進も担当しています。</p>
+          <p class="about-body">授業準備へのAI活用、iPadを使った授業実践、校内の業務改善など、教育現場のリアルな取り組みを発信中。成功事例だけでなく、失敗や試行錯誤もそのまま記録。同じ課題を抱える教員・教育関係者のヒントになれば嬉しいです。</p>
+          <div class="skill-cards">
+            <div class="skill-card scroll-reveal" style="--delay:0.1s">
+              <div class="skill-icon-wrap"><span>📘</span></div>
+              <div><div class="skill-name">英語教育</div><div class="skill-desc">高校英語・授業づくり</div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-icon">🤖</div>
-              <div class="skill-text">
-                <div class="skill-name">AI活用</div>
-                <div class="skill-desc">授業準備・プロンプト設計</div>
-              </div>
+            <div class="skill-card scroll-reveal" style="--delay:0.2s">
+              <div class="skill-icon-wrap"><span>🤖</span></div>
+              <div><div class="skill-name">AI活用</div><div class="skill-desc">授業準備・プロンプト設計</div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-icon">📱</div>
-              <div class="skill-text">
-                <div class="skill-name">DX推進</div>
-                <div class="skill-desc">iPad・校内改革</div>
-              </div>
+            <div class="skill-card scroll-reveal" style="--delay:0.3s">
+              <div class="skill-icon-wrap"><span>📱</span></div>
+              <div><div class="skill-name">DX推進</div><div class="skill-desc">iPad・校内改革</div></div>
             </div>
           </div>
         </div>
-        <div class="about-note-link">
-          <div class="note-card">
-            <div class="note-card-label">発信先</div>
-            <a href="https://note.com/english_dx" target="_blank" class="note-card-inner">
-              <div class="note-logo">note</div>
-              <div class="note-card-text">
-                <div class="note-card-name">英語教員のDX日誌</div>
-                <div class="note-card-url">note.com/english_dx</div>
+        <div class="about-side scroll-reveal">
+          <div class="note-widget">
+            <div class="note-widget-label">📝 発信先</div>
+            <a href="https://note.com/english_dx" target="_blank" class="note-widget-main">
+              <div class="note-logo-badge">note</div>
+              <div>
+                <div class="note-widget-name">英語教員のDX日誌</div>
+                <div class="note-widget-url">note.com/english_dx</div>
               </div>
-              <div class="note-card-arrow">→</div>
+              <div class="note-widget-arrow">→</div>
             </a>
-            <div class="note-magazines">
-              <a href="https://note.com/english_dx" target="_blank" class="magazine-pill">🧪 英語授業 lab with AI</a>
-              <a href="https://note.com/english_dx" target="_blank" class="magazine-pill">📱 DX日誌</a>
+            <div class="magazine-list">
+              <a href="https://note.com/english_dx" target="_blank" class="mag-item">
+                <span class="mag-dot"></span>🧪 英語授業 lab with AI <span class="mag-count">4本</span>
+              </a>
+              <a href="https://note.com/english_dx" target="_blank" class="mag-item">
+                <span class="mag-dot"></span>📱 DX日誌 <span class="mag-count">4本</span>
+              </a>
             </div>
           </div>
         </div>
@@ -144,73 +152,90 @@
     </div>
   </section>
 
-  <!-- 最近の記事 -->
+  <!-- ARTICLES -->
   <section id="articles" class="section section-dark">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <div class="section-label">02 / Articles</div>
         <h2 class="section-title">最近の記事</h2>
         <p class="section-sub">Noteで更新中。有料記事もあります。</p>
       </div>
-      <div class="articles-grid" id="articlesGrid">
-        <div class="articles-loading">
-          <div class="loading-dots"><span></span><span></span><span></span></div>
-        </div>
+      <div class="featured-article scroll-reveal" id="featuredArticle" style="display:none">
+        <a href="#" target="_blank" id="featuredLink" class="featured-inner">
+          <div class="featured-img-wrap">
+            <img src="" alt="" id="featuredImg" class="featured-img">
+            <div class="featured-overlay"></div>
+            <span class="featured-badge">最新記事</span>
+          </div>
+          <div class="featured-text">
+            <span class="featured-date" id="featuredDate"></span>
+            <h3 class="featured-title" id="featuredTitle"></h3>
+            <span class="featured-cta">記事を読む →</span>
+          </div>
+        </a>
       </div>
-      <div class="articles-footer">
-        <a href="https://note.com/english_dx" target="_blank" class="btn-outline">すべての記事を見る →</a>
+      <div class="articles-grid" id="articlesGrid">
+        <div class="articles-loading"><span></span><span></span><span></span></div>
+      </div>
+      <div class="articles-footer scroll-reveal">
+        <a href="https://note.com/english_dx" target="_blank" class="btn-outline magnetic">すべての記事を見る →</a>
       </div>
     </div>
   </section>
 
-  <!-- 教材 -->
+  <!-- MATERIALS -->
   <section id="materials" class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <div class="section-label">03 / Materials</div>
         <h2 class="section-title">教材・コンテンツ</h2>
       </div>
-      <div class="materials-coming">
-        <div class="coming-icon">🗂️</div>
+      <div class="materials-card scroll-reveal">
+        <div class="materials-icon">🗂️</div>
         <h3>準備中</h3>
         <p>授業で使えるワークシートや教材を、順次公開していきます。<br>Noteをフォローして最新情報をお見逃しなく。</p>
-        <a href="https://note.com/english_dx" target="_blank" class="btn-ghost">Noteをフォローする</a>
+        <a href="https://note.com/english_dx" target="_blank" class="btn-ghost magnetic">Noteをフォローする</a>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact" class="section section-dark">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <div class="section-label">04 / Contact</div>
         <h2 class="section-title">Contact</h2>
         <p class="section-sub">コメント・感想・お問い合わせはこちらから。</p>
       </div>
       <div class="contact-grid">
-        <a href="https://note.com/english_dx" target="_blank" class="contact-card">
-          <div class="contact-platform note-platform">note</div>
+        <a href="https://note.com/english_dx" target="_blank" class="contact-card scroll-reveal" style="--delay:0s">
+          <div class="contact-glow note-glow"></div>
+          <div class="contact-top">
+            <span class="contact-icon note-icon">note</span>
+            <span class="contact-arrow">↗</span>
+          </div>
           <h3>Note</h3>
           <p>記事へのコメント・感想はNoteのコメント欄にどうぞ</p>
-          <span class="contact-link">note.com/english_dx →</span>
+          <span class="contact-url">note.com/english_dx</span>
         </a>
-        <a href="https://x.com/dx_eigo_nikki" target="_blank" class="contact-card">
-          <div class="contact-platform x-platform">𝕏</div>
+        <a href="https://x.com/dx_eigo_nikki" target="_blank" class="contact-card scroll-reveal" style="--delay:0.15s">
+          <div class="contact-glow x-glow"></div>
+          <div class="contact-top">
+            <span class="contact-icon x-icon">𝕏</span>
+            <span class="contact-arrow">↗</span>
+          </div>
           <h3>X（旧Twitter）</h3>
           <p>日々の気づきや教育×AIの話題をポストしています</p>
-          <span class="contact-link">@dx_eigo_nikki →</span>
+          <span class="contact-url">@dx_eigo_nikki</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- フッター -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">
-          <span class="logo-bracket">[</span>DX<span class="logo-accent">English</span>Teacher<span class="logo-bracket">]</span>
-        </div>
+        <div class="footer-logo"><span class="logo-bracket">[</span>DX<span class="logo-accent">English</span>Teacher<span class="logo-bracket">]</span></div>
         <p class="footer-copy">© 2026 英語教員のDX日誌</p>
         <div class="footer-links">
           <a href="https://note.com/english_dx" target="_blank">Note</a>
@@ -220,97 +245,172 @@
     </div>
   </footer>
 
-  <script>
-    // ナビスクロール
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
+<script>
+// ── Particle canvas ──────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize(){ W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  resize(); window.addEventListener('resize', ()=>{ resize(); particles=[]; init(); });
+  function init(){
+    const n = Math.floor(W*H/12000);
+    for(let i=0;i<n;i++) particles.push({ x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4, r:Math.random()*1.5+.5 });
+  }
+  init();
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,212,255,.6)'; ctx.fill();
     });
-
-    // モバイルメニュー
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      toggle.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.classList.remove('active');
-      });
-    });
-
-    // スムーズスクロール
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    // スクロールアニメーション
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.section-header, .about-grid, .skill-item, .about-note-link, .contact-card, .materials-coming').forEach(el => {
-      el.classList.add('fade-up');
-      observer.observe(el);
-    });
-
-    // Note RSS → 記事一覧（実データ入りフォールバック）
-    const staticArticles = [
-      { title: 'AIに何を聞けばいいかわからない。その悩みを解決する一文', url: 'https://note.com/english_dx/n/nf23e98940575', img: 'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800' },
-      { title: '「教科書おもんない」から始まった、AIで作る長文読解', url: 'https://note.com/english_dx/n/n6a9d8a05102f', img: 'https://assets.st-note.com/production/uploads/images/288041580/rectangle_large_type_2_a4daeeb03ec808ec0fa908e1e50639bf.png?width=800' },
-      { title: '英検一次試験の結果が出た。それでもまだ、間に合う話', url: 'https://note.com/english_dx/n/n8ab0d00c0ee0', img: 'https://assets.st-note.com/production/uploads/images/287458172/rectangle_large_type_2_42e5787556e76e0400f858b897b6ad17.png?width=800' },
-      { title: 'iPadが来た教室で、最初に起きたこと', url: 'https://note.com/english_dx/n/n664ff785bfd3', img: 'https://assets.st-note.com/production/uploads/images/287336947/rectangle_large_type_2_31e5798e96c44cc1f50b8cc014f78c19.png?width=800' },
-      { title: 'AIに授業を「相談」する。プロンプトなしで始める方法', url: 'https://note.com/english_dx/n/nff7931460f73', img: 'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800' },
-      { title: '授業準備でAIは必要？　正直に答えます', url: 'https://note.com/english_dx/n/nbc33dbfe2224', img: 'https://assets.st-note.com/production/uploads/images/284985512/rectangle_large_type_2_1f27f18811ce428aa3ccaf0ca9d4e280.png?width=800' },
-    ];
-
-    function renderArticles(items) {
-      const grid = document.getElementById('articlesGrid');
-      grid.innerHTML = items.map((a, i) => `
-        <a href="${a.url}" target="_blank" class="article-card fade-up visible">
-          <div class="article-thumb">
-            <img src="${a.img}" alt="" class="article-img" onerror="this.parentElement.innerHTML='<div class=&quot;article-img-placeholder&quot;><span>0${i+1}</span></div>'">
-          </div>
-          <div class="article-info">
-            ${a.date ? `<span class="article-date">${a.date}</span>` : ''}
-            <h3 class="article-title">${a.title}</h3>
-            <span class="article-read">読む →</span>
-          </div>
-        </a>`).join('');
+    for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<130){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.strokeStyle=`rgba(0,212,255,${.12*(1-d/130)})`; ctx.lineWidth=.5; ctx.stroke(); }
     }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-    async function loadArticles() {
-      try {
-        const rssUrl = 'https://note.com/english_dx/rss';
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-        const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(5000) });
-        const json = await res.json();
-        const xml = new DOMParser().parseFromString(json.contents, 'text/xml');
-        const items = Array.from(xml.querySelectorAll('item')).slice(0, 6).map((item, i) => {
-          const enclosure = item.querySelector('enclosure');
-          const img = enclosure?.getAttribute('url') || staticArticles[i]?.img || '';
-          const pubDate = item.querySelector('pubDate')?.textContent || '';
-          return {
-            title: item.querySelector('title')?.textContent || '',
-            url: item.querySelector('link')?.nextSibling?.textContent?.trim() || item.querySelector('link')?.textContent || '',
-            img,
-            date: pubDate ? new Date(pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }) : '',
-          };
-        });
-        if (!items.length) throw new Error();
-        renderArticles(items);
-      } catch {
-        renderArticles(staticArticles);
-      }
-    }
-    loadArticles();
-  </script>
+// ── Navbar scroll ─────────────────────────────────────────
+window.addEventListener('scroll', ()=>{
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY>40);
+});
+
+// ── Mobile menu ───────────────────────────────────────────
+const toggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+toggle.addEventListener('click', ()=>{ navLinks.classList.toggle('open'); toggle.classList.toggle('active'); });
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ navLinks.classList.remove('open'); toggle.classList.remove('active'); }));
+
+// ── Smooth scroll ─────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); });
+});
+
+// ── Hero reveal ───────────────────────────────────────────
+window.addEventListener('load', ()=>{
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ setTimeout(()=>el.classList.add('active'), i*120); });
+});
+
+// ── Typewriter ────────────────────────────────────────────
+function typewriter(el, text, speed=45){
+  el.textContent=''; let i=0;
+  const tick=()=>{ if(i<text.length){ el.textContent+=text[i++]; setTimeout(tick,speed); } };
+  setTimeout(tick, 800);
+}
+typewriter(document.getElementById('typewriterEl'), '授業づくり・AI活用・校内改革。成功も失敗も、リアルな記録を発信しています。');
+
+// ── Scroll reveal ─────────────────────────────────────────
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('active'); ro.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.scroll-reveal').forEach(el=>ro.observe(el));
+
+// ── Stat counter ──────────────────────────────────────────
+const statObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.querySelectorAll('.stat-num').forEach(el=>{
+      const target=+el.dataset.target; let cur=0;
+      const step=()=>{ cur=Math.min(cur+1,target); el.textContent=cur; if(cur<target) setTimeout(step,60); };
+      step();
+    });
+    statObs.unobserve(e.target);
+  });
+},{threshold:.5});
+const statBand = document.querySelector('.stats-band');
+if(statBand) statObs.observe(statBand);
+
+// ── 3D Tilt ───────────────────────────────────────────────
+function applyTilt(el){
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateY(${x*14}deg) rotateX(${-y*14}deg) translateY(-6px) scale(1.02)`;
+  });
+  el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+}
+
+// ── Magnetic buttons ─────────────────────────────────────
+document.querySelectorAll('.magnetic').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.25;
+    const y=(e.clientY-r.top-r.height/2)*.25;
+    el.style.transform=`translate(${x}px,${y}px)`;
+  });
+  el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+});
+
+// ── Articles ─────────────────────────────────────────────
+const staticArticles = [
+  { title:'AIに何を聞けばいいかわからない。その悩みを解決する一文', url:'https://note.com/english_dx/n/nf23e98940575', img:'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800' },
+  { title:'「教科書おもんない」から始まった、AIで作る長文読解', url:'https://note.com/english_dx/n/n6a9d8a05102f', img:'https://assets.st-note.com/production/uploads/images/288041580/rectangle_large_type_2_a4daeeb03ec808ec0fa908e1e50639bf.png?width=800' },
+  { title:'英検一次試験の結果が出た。それでもまだ、間に合う話', url:'https://note.com/english_dx/n/n8ab0d00c0ee0', img:'https://assets.st-note.com/production/uploads/images/287458172/rectangle_large_type_2_42e5787556e76e0400f858b897b6ad17.png?width=800' },
+  { title:'iPadが来た教室で、最初に起きたこと', url:'https://note.com/english_dx/n/n664ff785bfd3', img:'https://assets.st-note.com/production/uploads/images/287336947/rectangle_large_type_2_31e5798e96c44cc1f50b8cc014f78c19.png?width=800' },
+  { title:'AIに授業を「相談」する。プロンプトなしで始める方法', url:'https://note.com/english_dx/n/nff7931460f73', img:'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800' },
+  { title:'授業準備でAIは必要？　正直に答えます', url:'https://note.com/english_dx/n/nbc33dbfe2224', img:'https://assets.st-note.com/production/uploads/images/284985512/rectangle_large_type_2_1f27f18811ce428aa3ccaf0ca9d4e280.png?width=800' },
+];
+
+function renderArticles(items){
+  const grid = document.getElementById('articlesGrid');
+  const featured = document.getElementById('featuredArticle');
+  const first = items[0];
+  if(first){
+    document.getElementById('featuredLink').href = first.url;
+    document.getElementById('featuredImg').src = first.img;
+    document.getElementById('featuredTitle').textContent = first.title;
+    if(first.date) document.getElementById('featuredDate').textContent = first.date;
+    featured.style.display = '';
+  }
+  const rest = items.slice(1);
+  grid.innerHTML = rest.map((a,i)=>`
+    <a href="${a.url}" target="_blank" class="article-card">
+      <div class="article-thumb">
+        <img src="${a.img}" alt="" class="article-img" onerror="this.parentElement.innerHTML='<div class=art-placeholder>0${i+2}</div>'">
+        <div class="article-thumb-overlay"></div>
+      </div>
+      <div class="article-info">
+        ${a.date?`<span class="article-date">${a.date}</span>`:''}
+        <h3 class="article-title">${a.title}</h3>
+        <span class="article-read">読む →</span>
+      </div>
+    </a>`).join('');
+  grid.querySelectorAll('.article-card').forEach(applyTilt);
+  const artObs = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); artObs.unobserve(e.target); } });
+  },{threshold:.08});
+  grid.querySelectorAll('.article-card').forEach(el=>{ el.classList.add('art-hidden'); artObs.observe(el); });
+}
+
+async function loadArticles(){
+  try{
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://note.com/english_dx/rss')}`,{signal:AbortSignal.timeout(5000)});
+    const json = await res.json();
+    const xml = new DOMParser().parseFromString(json.contents,'text/xml');
+    const items = Array.from(xml.querySelectorAll('item')).slice(0,6).map((item,i)=>{
+      const enc = item.querySelector('enclosure');
+      const pub = item.querySelector('pubDate')?.textContent||'';
+      return {
+        title: item.querySelector('title')?.textContent||'',
+        url: item.querySelector('link')?.nextSibling?.textContent?.trim()||item.querySelector('link')?.textContent||'',
+        img: enc?.getAttribute('url')||staticArticles[i]?.img||'',
+        date: pub?new Date(pub).toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}):'',
+      };
+    });
+    if(!items.length) throw new Error();
+    renderArticles(items);
+  } catch{ renderArticles(staticArticles); }
+}
+loadArticles();
+</script>
 </body>
 </html>
