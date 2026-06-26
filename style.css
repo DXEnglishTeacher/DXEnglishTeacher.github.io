@@ -284,11 +284,36 @@ img { display: block; max-width: 100%; }
 .btn-outline { display: inline-flex; align-items: center; border: 1px solid var(--line-2); color: var(--blue); font-weight: 700; padding: 15px 34px; border-radius: 100px; font-size: .96rem; transition: background var(--t), transform var(--t); }
 .btn-outline:hover { background: rgba(74,158,255,.08); transform: translateY(-2px); }
 
-/* ════════ Materials ════════ */
-.materials-card { max-width: 580px; margin: 0 auto; text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 64px 44px; }
-.materials-icon { font-size: 3.6rem; margin-bottom: 22px; }
-.materials-card h3 { font-size: 1.45rem; font-weight: 800; margin-bottom: 16px; }
-.materials-card p { color: var(--muted); margin-bottom: 34px; }
+/* ════════ 英検対策 (Materials) ════════ */
+.material-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+.material-card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; transition: border-color var(--t), transform var(--t), box-shadow var(--t); }
+.material-card:hover { border-color: var(--line-2); transform: translateY(-6px); box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.material-thumb { position: relative; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0F2038, #142A48); }
+.material-emoji { font-size: 3rem; }
+.material-grade { position: absolute; top: 14px; left: 14px; background: linear-gradient(135deg, var(--blue), var(--blue-2)); color: #fff; font-weight: 800; font-size: .76rem; padding: 5px 13px; border-radius: 100px; box-shadow: 0 4px 14px rgba(46,123,255,.4); }
+.material-info { padding: 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.material-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+.material-desc { font-size: .85rem; color: var(--muted); flex: 1; }
+.material-dl { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 700; color: var(--blue); margin-top: 6px; }
+.material-card.is-coming { opacity: .58; pointer-events: none; }
+.material-card.is-coming .material-dl { color: var(--muted); }
+
+/* ════════ プロンプト集 (Prompts) ════════ */
+.prompt-cat { margin-bottom: 44px; }
+.prompt-cat:last-child { margin-bottom: 0; }
+.prompt-cat-title { display: flex; align-items: center; gap: 11px; font-size: 1.2rem; font-weight: 800; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.prompt-cat-title span { font-size: 1.35rem; }
+.prompt-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 18px; }
+.prompt-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px 24px; transition: border-color var(--t); }
+.prompt-card:hover { border-color: var(--line-2); }
+.prompt-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+.prompt-name { font-size: .98rem; font-weight: 700; color: var(--text); line-height: 1.5; }
+.copy-btn { flex-shrink: 0; cursor: pointer; border: 1px solid var(--line-2); background: rgba(74,158,255,.08); color: var(--blue); font-family: inherit; font-weight: 700; font-size: .78rem; padding: 7px 15px; border-radius: 100px; transition: background var(--t), color var(--t), border-color var(--t); }
+.copy-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.copy-btn.copied { background: #1FB57A; color: #fff; border-color: #1FB57A; }
+.prompt-text { font-size: .85rem; line-height: 1.75; color: var(--muted); white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 15px 17px; max-height: 168px; overflow-y: auto; }
+.prompt-text::-webkit-scrollbar { width: 7px; }
+.prompt-text::-webkit-scrollbar-thumb { background: var(--faint); border-radius: 4px; }
 
 /* ════════ Contact ════════ */
 .contact-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
@@ -338,6 +363,8 @@ img { display: block; max-width: 100%; }
   .stat-num { font-size: 2.4rem; }
   .contact-grid { grid-template-columns: 1fr; }
   .featured-body { padding: 30px; }
+  .material-grid { grid-template-columns: 1fr; }
+  .prompt-list { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
