@@ -65,8 +65,9 @@
         <div class="profile-wrap">
           <div class="profile-ring-outer"></div>
           <div class="profile-ring-inner"></div>
+          <!-- profile.jpg を用意したら src="profile.jpg" に変更 -->
           <div class="profile-placeholder" id="profileArea">
-            <img src="profile.png" alt="プロフィール写真">
+            <span class="profile-initials">DX</span>
           </div>
           <div class="profile-badge-1">📘 英語教員</div>
           <div class="profile-badge-2">🤖 AI活用</div>
@@ -260,55 +261,53 @@
       observer.observe(el);
     });
 
-    // Note RSS → 記事一覧
-    async function loadArticles() {
+    // Note RSS → 記事一覧（実データ入りフォールバック）
+    const staticArticles = [
+      { title: 'AIに何を聞けばいいかわからない。その悩みを解決する一文', url: 'https://note.com/english_dx/n/nf23e98940575', img: 'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800' },
+      { title: '「教科書おもんない」から始まった、AIで作る長文読解', url: 'https://note.com/english_dx/n/n6a9d8a05102f', img: 'https://assets.st-note.com/production/uploads/images/288041580/rectangle_large_type_2_a4daeeb03ec808ec0fa908e1e50639bf.png?width=800' },
+      { title: '英検一次試験の結果が出た。それでもまだ、間に合う話', url: 'https://note.com/english_dx/n/n8ab0d00c0ee0', img: 'https://assets.st-note.com/production/uploads/images/287458172/rectangle_large_type_2_42e5787556e76e0400f858b897b6ad17.png?width=800' },
+      { title: 'iPadが来た教室で、最初に起きたこと', url: 'https://note.com/english_dx/n/n664ff785bfd3', img: 'https://assets.st-note.com/production/uploads/images/287336947/rectangle_large_type_2_31e5798e96c44cc1f50b8cc014f78c19.png?width=800' },
+      { title: 'AIに授業を「相談」する。プロンプトなしで始める方法', url: 'https://note.com/english_dx/n/nff7931460f73', img: 'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800' },
+      { title: '授業準備でAIは必要？　正直に答えます', url: 'https://note.com/english_dx/n/nbc33dbfe2224', img: 'https://assets.st-note.com/production/uploads/images/284985512/rectangle_large_type_2_1f27f18811ce428aa3ccaf0ca9d4e280.png?width=800' },
+    ];
+
+    function renderArticles(items) {
       const grid = document.getElementById('articlesGrid');
-      const rssUrl = 'https://note.com/english_dx/rss';
-      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=6`;
+      grid.innerHTML = items.map((a, i) => `
+        <a href="${a.url}" target="_blank" class="article-card fade-up visible">
+          <div class="article-thumb">
+            <img src="${a.img}" alt="" class="article-img" onerror="this.parentElement.innerHTML='<div class=&quot;article-img-placeholder&quot;><span>0${i+1}</span></div>'">
+          </div>
+          <div class="article-info">
+            ${a.date ? `<span class="article-date">${a.date}</span>` : ''}
+            <h3 class="article-title">${a.title}</h3>
+            <span class="article-read">読む →</span>
+          </div>
+        </a>`).join('');
+    }
+
+    async function loadArticles() {
       try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        if (data.status !== 'ok' || !data.items.length) throw new Error();
-        grid.innerHTML = data.items.map((item, i) => {
-          const date = new Date(item.pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
-          const img = item.thumbnail
-            ? `<img src="${item.thumbnail}" alt="" class="article-img">`
-            : `<div class="article-img-placeholder"><span>0${i+1}</span></div>`;
-          return `
-            <a href="${item.link}" target="_blank" class="article-card">
-              <div class="article-thumb">${img}</div>
-              <div class="article-info">
-                <span class="article-date">${date}</span>
-                <h3 class="article-title">${item.title}</h3>
-                <span class="article-read">読む →</span>
-              </div>
-            </a>`;
-        }).join('');
-        grid.querySelectorAll('.article-card').forEach(el => {
-          el.classList.add('fade-up');
-          observer.observe(el);
+        const rssUrl = 'https://note.com/english_dx/rss';
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+        const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(5000) });
+        const json = await res.json();
+        const xml = new DOMParser().parseFromString(json.contents, 'text/xml');
+        const items = Array.from(xml.querySelectorAll('item')).slice(0, 6).map((item, i) => {
+          const enclosure = item.querySelector('enclosure');
+          const img = enclosure?.getAttribute('url') || staticArticles[i]?.img || '';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+          return {
+            title: item.querySelector('title')?.textContent || '',
+            url: item.querySelector('link')?.nextSibling?.textContent?.trim() || item.querySelector('link')?.textContent || '',
+            img,
+            date: pubDate ? new Date(pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }) : '',
+          };
         });
+        if (!items.length) throw new Error();
+        renderArticles(items);
       } catch {
-        const staticArticles = [
-          { title: 'AIに何を聞けばいいかわからない。その悩みを解決する一文', url: 'https://note.com/english_dx' },
-          { title: '「教科書おもんない」から始まった、AIで作る長文読解', url: 'https://note.com/english_dx' },
-          { title: '英検一次試験の結果が出た。それでもまだ、間に合う話', url: 'https://note.com/english_dx' },
-          { title: 'iPadが来た教室で、最初に起きたこと', url: 'https://note.com/english_dx' },
-          { title: 'AIに授業を「相談」する。プロンプトなしで始める方法', url: 'https://note.com/english_dx' },
-          { title: '授業準備でAIは必要？　正直に答えます', url: 'https://note.com/english_dx' },
-        ];
-        grid.innerHTML = staticArticles.map((a, i) => `
-          <a href="${a.url}" target="_blank" class="article-card">
-            <div class="article-thumb"><div class="article-img-placeholder"><span>0${i+1}</span></div></div>
-            <div class="article-info">
-              <h3 class="article-title">${a.title}</h3>
-              <span class="article-read">読む →</span>
-            </div>
-          </a>`).join('');
-        grid.querySelectorAll('.article-card').forEach(el => {
-          el.classList.add('fade-up');
-          observer.observe(el);
-        });
+        renderArticles(staticArticles);
       }
     }
     loadArticles();
