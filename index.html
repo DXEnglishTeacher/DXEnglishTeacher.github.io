@@ -197,7 +197,7 @@
   <section id="stats" class="border-y border-slate-100 bg-slate-50/70">
     <div class="max-w-container mx-auto grid grid-cols-2 gap-px px-6 py-4 md:grid-cols-4">
       <div class="px-4 py-8 text-center">
-        <div class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="12">0</div>
+        <div id="statPosts" class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="14">0</div>
         <div class="mt-1 text-sm text-slate-400">投稿記事</div>
       </div>
       <div class="px-4 py-8 text-center">
@@ -397,18 +397,29 @@ addEventListener('DOMContentLoaded', () => {
 });
 
 // ── 数字カウントアップ ──
+function countUp(el) {
+  const target = +el.dataset.target; let cur = 0;
+  const tick = () => { cur = Math.min(cur + Math.max(1, Math.ceil(target / 28)), target); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
+  tick();
+}
+let statsAnimated = false;
 const statObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
-    e.target.querySelectorAll('.stat-num').forEach(el => {
-      const target = +el.dataset.target; let cur = 0;
-      const tick = () => { cur = Math.min(cur + Math.ceil(target / 28), target); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
-      tick();
-    });
+    e.target.querySelectorAll('.stat-num').forEach(countUp);
+    statsAnimated = true;
     statObs.unobserve(e.target);
   });
 }, { threshold: 0.5 });
 statObs.observe(document.getElementById('stats'));
+
+// 投稿記事数をRSS件数で更新（自動反映）
+function updatePostCount(n) {
+  const el = document.getElementById('statPosts');
+  if (!el || !n) return;
+  el.dataset.target = String(n);
+  if (statsAnimated) el.textContent = String(n); // 既にアニメ済みなら即反映
+}
 
 function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
@@ -454,8 +465,10 @@ async function loadArticles() {
     const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://note.com/english_dx/rss')}`, { signal: AbortSignal.timeout(6000) });
     const json = await res.json();
     const xml = new DOMParser().parseFromString(json.contents, 'text/xml');
-    const nodes = [...xml.querySelectorAll('item')].slice(0, 6);
-    if (!nodes.length) throw new Error('empty');
+    const allNodes = [...xml.querySelectorAll('item')];
+    if (!allNodes.length) throw new Error('empty');
+    updatePostCount(allNodes.length);
+    const nodes = allNodes.slice(0, 6);
     const items = nodes.map((item, i) => {
       const enc = item.querySelector('enclosure');
       const pub = item.querySelector('pubDate')?.textContent || '';
