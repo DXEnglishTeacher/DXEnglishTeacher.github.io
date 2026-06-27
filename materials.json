@@ -1,0 +1,69 @@
+{
+  "materials": [
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "Eメール",
+      "emoji": "✉️",
+      "lessonNo": "L01",
+      "title": "料理教室",
+      "files": {
+        "student": "materials/3kyu_email_L01_student.pdf",
+        "teacher": "materials/3kyu_email_L01_teacher.pdf",
+        "answer": "materials/3kyu_email_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "リーディング",
+      "emoji": "📖",
+      "lessonNo": "L01",
+      "title": "屋外読書スペース",
+      "files": {
+        "student": "materials/3kyu_reading_L01_student.pdf",
+        "teacher": "materials/3kyu_reading_L01_teacher.pdf",
+        "answer": "materials/3kyu_reading_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "リーディング",
+      "emoji": "📖",
+      "lessonNo": "L02",
+      "title": "地域の修理イベント",
+      "files": {
+        "student": "materials/3kyu_reading_L02_student.pdf",
+        "teacher": "materials/3kyu_reading_L02_teacher.pdf",
+        "answer": "materials/3kyu_reading_L02_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "リーディング",
+      "emoji": "📖",
+      "lessonNo": "L03",
+      "title": "新入生向け校内マップ",
+      "files": {
+        "student": "materials/3kyu_reading_L03_student.pdf",
+        "teacher": "materials/3kyu_reading_L03_teacher.pdf",
+        "answer": "materials/3kyu_reading_L03_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "意見論述",
+      "emoji": "✍️",
+      "lessonNo": "L01",
+      "title": "友達と宿題",
+      "files": {
+        "student": "materials/3kyu_opinion_L01_student.pdf",
+        "teacher": "materials/3kyu_opinion_L01_teacher.pdf",
+        "answer": "materials/3kyu_opinion_L01_answer.pdf"
+      }
+    }
+  ]
+}

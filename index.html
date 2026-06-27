@@ -152,34 +152,10 @@
       <div class="section-head reveal-up">
         <span class="section-label">03 — Eiken</span>
         <h2 class="section-title">英検対策教材</h2>
-        <p class="section-sub">授業・自学で使えるワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
+        <p class="section-sub">授業・自学で使えるオリジナルワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
       </div>
-      <div class="material-grid">
-        <!-- 教材カードのサンプル。実ファイルを用意したらここに追加します -->
-        <a href="#" class="material-card reveal-up is-coming" aria-disabled="true">
-          <div class="material-thumb"><span class="material-grade">2級</span><span class="material-emoji">📝</span></div>
-          <div class="material-info">
-            <h3 class="material-title">英作文テンプレート集（準備中）</h3>
-            <p class="material-desc">英検2級ライティングの型と表現フレーズ</p>
-            <span class="material-dl">近日公開</span>
-          </div>
-        </a>
-        <a href="#" class="material-card reveal-up is-coming" style="--d:.08s" aria-disabled="true">
-          <div class="material-thumb"><span class="material-grade">準2級</span><span class="material-emoji">🗣️</span></div>
-          <div class="material-info">
-            <h3 class="material-title">面接練習シート（準備中）</h3>
-            <p class="material-desc">二次試験の流れと頻出質問・回答例</p>
-            <span class="material-dl">近日公開</span>
-          </div>
-        </a>
-        <a href="#" class="material-card reveal-up is-coming" style="--d:.16s" aria-disabled="true">
-          <div class="material-thumb"><span class="material-grade">3級</span><span class="material-emoji">📚</span></div>
-          <div class="material-info">
-            <h3 class="material-title">頻出単語リスト（準備中）</h3>
-            <p class="material-desc">3級合格に必要な必修単語をテーマ別に整理</p>
-            <span class="material-dl">近日公開</span>
-          </div>
-        </a>
+      <div id="materialGrid" class="material-grid">
+        <div class="loading"><span></span><span></span><span></span></div>
       </div>
     </div>
   </section>
@@ -339,6 +315,39 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     navToggle.classList.remove('active');
   });
 });
+
+// ── 英検教材（materials.json から自動描画）──
+const ROLE_LABEL = { student: '問題', answer: '解答・解説', teacher: '指導用' };
+const ROLE_PRIMARY = { student: true };
+async function loadMaterials() {
+  const grid = document.getElementById('materialGrid');
+  try {
+    const res = await fetch('materials.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('no file');
+    const { materials } = await res.json();
+    if (!materials || !materials.length) throw new Error('empty');
+    grid.innerHTML = materials.map((m, i) => {
+      const btns = Object.entries(m.files).map(([role, path]) =>
+        `<a href="${path}" download class="material-dl${ROLE_PRIMARY[role] ? ' primary' : ''}">${ROLE_LABEL[role] || role} ↓</a>`
+      ).join('');
+      return `<div class="material-card reveal-up" style="--d:${(i % 3) * .08}s">
+        <div class="material-thumb">
+          <span class="material-grade">${m.grade}</span>
+          <span class="material-section">${m.section}</span>
+          <span class="material-emoji">${m.emoji}</span>
+        </div>
+        <div class="material-info">
+          <h3 class="material-title">${m.lessonNo}　${m.title}</h3>
+          <div class="material-actions">${btns}</div>
+        </div>
+      </div>`;
+    }).join('');
+    observeReveals();
+  } catch {
+    grid.innerHTML = `<div class="materials-empty">教材は準備中です。順次公開していきます。</div>`;
+  }
+}
+loadMaterials();
 
 // ── Prompt copy buttons ──
 document.querySelectorAll('.copy-btn').forEach(btn => {
