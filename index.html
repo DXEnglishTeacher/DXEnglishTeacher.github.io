@@ -19,7 +19,7 @@
   <link rel="canonical" href="https://dxenglishteacher.github.io/">
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- OGP（SNSシェア時のカード表示）-->
+  <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="英語教員のDX日誌">
   <meta property="og:url" content="https://dxenglishteacher.github.io/">
@@ -48,24 +48,54 @@
       "name": "DXEnglishTeacher",
       "jobTitle": "高校英語教員 / 学校DX推進担当",
       "url": "https://dxenglishteacher.github.io/",
-      "sameAs": [
-        "https://note.com/english_dx",
-        "https://x.com/dx_eigo_nikki"
-      ]
+      "sameAs": ["https://note.com/english_dx", "https://x.com/dx_eigo_nikki"]
     }
   }
   </script>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="prompts.js"></script>
-</head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- ░░ アイコンスプライト（ラインアイコン） ░░ -->
-  <svg width="0" height="0" class="svg-sprite" aria-hidden="true">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Zen Kaku Gothic New"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Zen Kaku Gothic New"', 'sans-serif'],
+          },
+          maxWidth: { container: '1180px' },
+        },
+      },
+    };
+  </script>
+  <script src="prompts.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; }
+    .ico { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .prompt-text { white-space: pre-wrap; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,.61,.36,1) var(--d,0s), transform .7s cubic-bezier(.22,.61,.36,1) var(--d,0s); }
+    .reveal.show { opacity: 1; transform: none; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes floaty2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+    .animate-floaty { animation: floaty 6s ease-in-out infinite; }
+    .animate-floaty2 { animation: floaty2 7s ease-in-out infinite; }
+    .scrollbar-thin::-webkit-scrollbar { width: 7px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+
+<body class="font-sans text-slate-700 bg-white antialiased selection:bg-blue-100">
+
+  <!-- アイコンスプライト -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
     <symbol id="i-cap" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
     <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
     <symbol id="i-device" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
@@ -74,344 +104,313 @@
     <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
     <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.38 3.62a2.12 2.12 0 0 1 3 3L7.5 18.5l-4 1 1-4z"/></symbol>
     <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   </svg>
 
   <!-- ░░ Navbar ░░ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo">
-        <span class="logo-bracket">[</span>DX<span class="logo-accent">English</span>Teacher<span class="logo-bracket">]</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#articles">記事</a></li>
-        <li><a href="#materials">英検対策</a></li>
-        <li><a href="#prompts">プロンプト集</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://note.com/english_dx" target="_blank" rel="noopener" class="nav-cta">Noteを読む</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
+  <nav id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="max-w-container mx-auto px-6">
+      <div class="flex h-[72px] items-center justify-between">
+        <a href="#home" class="font-display text-[17px] font-extrabold tracking-tight text-slate-900">
+          <span class="text-slate-300">[</span>DX<span class="text-blue-600">English</span>Teacher<span class="text-slate-300">]</span>
+        </a>
+        <ul id="navLinks" class="hidden items-center gap-9 md:flex">
+          <li><a href="#about" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">About</a></li>
+          <li><a href="#articles" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">記事</a></li>
+          <li><a href="#materials" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">英検対策</a></li>
+          <li><a href="#prompts" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">プロンプト集</a></li>
+          <li><a href="#contact" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">Contact</a></li>
+          <li><a href="https://note.com/english_dx" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30">Noteを読む</a></li>
+        </ul>
+        <button id="navToggle" class="flex flex-col gap-[5px] p-2 md:hidden" aria-label="メニュー">
+          <span class="block h-0.5 w-6 rounded bg-slate-800 transition"></span>
+          <span class="block h-0.5 w-6 rounded bg-slate-800 transition"></span>
+          <span class="block h-0.5 w-6 rounded bg-slate-800 transition"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white/95 backdrop-blur md:hidden">
+      <div class="flex flex-col gap-1 px-6 py-4">
+        <a href="#about" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">About</a>
+        <a href="#articles" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">記事</a>
+        <a href="#materials" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">英検対策</a>
+        <a href="#prompts" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">プロンプト集</a>
+        <a href="#contact" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">Contact</a>
+        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mt-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-center font-bold text-white">Noteを読む</a>
+      </div>
     </div>
   </nav>
 
   <!-- ░░ Hero ░░ -->
-  <section id="home" class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-grid"></div>
-      <div class="hero-glow hero-glow-1"></div>
-      <div class="hero-glow hero-glow-2"></div>
+  <header id="home" class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-24 right-[-10%] h-[480px] w-[480px] rounded-full bg-gradient-to-br from-blue-300/40 to-indigo-300/30 blur-3xl"></div>
+      <div class="absolute bottom-[-20%] left-[-10%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-sky-200/40 to-blue-200/20 blur-3xl"></div>
     </div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badge reveal">
-          <span class="badge-dot"></span>高校英語教員 × DX推進担当
+    <div class="max-w-container mx-auto grid items-center gap-16 px-6 pb-24 pt-36 lg:grid-cols-[1.05fr_.95fr] lg:pb-32 lg:pt-44">
+      <div>
+        <div class="reveal inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-[13px] font-semibold text-blue-700">
+          <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>高校英語教員 × DX推進担当
         </div>
-        <h1 class="hero-title reveal reveal-d1">
-          教室から始める<br><span class="title-gradient">デジタル革新。</span>
+        <h1 class="reveal mt-7 font-display text-[2.7rem] font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-6xl" style="--d:.08s">
+          教室から始める<br>
+          <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">デジタル革新。</span>
         </h1>
-        <p class="hero-desc reveal reveal-d2">
-          授業づくり・AI活用・校内改革。<br>
+        <p class="reveal mt-7 max-w-md text-lg leading-relaxed text-slate-500" style="--d:.16s">
+          授業づくり・AI活用・校内改革。<br class="hidden sm:block">
           成功も失敗も、現場のリアルな記録を発信しています。
         </p>
-        <div class="hero-actions reveal reveal-d3">
-          <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="btn-primary">
-            記事を読む
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="reveal mt-9 flex flex-wrap gap-3.5" style="--d:.24s">
+          <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/35">
+            記事を読む <svg class="ico h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg>
           </a>
-          <a href="#about" class="btn-ghost">プロフィールを見る</a>
+          <a href="#about" class="inline-flex items-center rounded-full border border-slate-200 bg-white px-7 py-3.5 font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            プロフィールを見る
+          </a>
         </div>
-        <div class="hero-tags reveal reveal-d4">
-          <span>#英語教育</span><span>#AI活用</span><span>#DX推進</span><span>#iPad授業</span>
+        <div class="reveal mt-8 flex flex-wrap gap-2" style="--d:.32s">
+          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#英語教育</span>
+          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#AI活用</span>
+          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#DX推進</span>
+          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#iPad授業</span>
         </div>
       </div>
-      <div class="hero-visual reveal reveal-d2">
-        <div class="brand-card">
-          <div class="brand-card-glow"></div>
-          <img src="profile.png" alt="英語教員のDX日誌" class="brand-img">
-          <div class="brand-shine"></div>
+
+      <div class="reveal relative mx-auto w-full max-w-md" style="--d:.2s">
+        <div class="absolute -inset-6 -z-10 rounded-[2.75rem] bg-gradient-to-tr from-blue-400/25 via-indigo-400/20 to-violet-400/20 blur-2xl"></div>
+        <img src="profile.png" alt="英語教員のDX日誌" class="w-full rounded-[2rem] shadow-2xl shadow-slate-300/60 ring-1 ring-slate-900/5">
+        <div class="animate-floaty absolute -right-3 top-8 flex items-center gap-2 rounded-2xl border border-slate-100 bg-white/90 px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-xl shadow-slate-200/70 backdrop-blur">
+          <svg class="ico h-4 w-4 text-blue-600"><use href="#i-cap"/></svg>英語教員
         </div>
-        <div class="float-chip chip-1"><svg class="ico"><use href="#i-cap"/></svg>英語教員</div>
-        <div class="float-chip chip-2"><svg class="ico"><use href="#i-cpu"/></svg>AI活用</div>
-        <div class="float-chip chip-3"><svg class="ico"><use href="#i-device"/></svg>DX推進</div>
+        <div class="animate-floaty2 absolute -left-4 top-1/2 flex items-center gap-2 rounded-2xl border border-slate-100 bg-white/90 px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-xl shadow-slate-200/70 backdrop-blur">
+          <svg class="ico h-4 w-4 text-indigo-600"><use href="#i-cpu"/></svg>AI活用
+        </div>
+        <div class="animate-floaty absolute -bottom-4 right-10 flex items-center gap-2 rounded-2xl border border-slate-100 bg-white/90 px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-xl shadow-slate-200/70 backdrop-blur" style="animation-delay:1s">
+          <svg class="ico h-4 w-4 text-violet-600"><use href="#i-device"/></svg>DX推進
+        </div>
       </div>
     </div>
-    <a href="#stats" class="hero-scroll" aria-label="下へスクロール">
-      <span>Scroll</span><span class="scroll-line"></span>
-    </a>
-  </section>
+  </header>
 
   <!-- ░░ Stats ░░ -->
-  <div id="stats" class="stats-band">
-    <div class="stats-inner">
-      <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-unit">本</span><span class="stat-label">投稿記事</span></div>
-      <div class="stat-sep"></div>
-      <div class="stat"><span class="stat-num" data-target="2">0</span><span class="stat-unit">冊</span><span class="stat-label">マガジン</span></div>
-      <div class="stat-sep"></div>
-      <div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-unit">年</span><span class="stat-label">英語教員歴</span></div>
-      <div class="stat-sep"></div>
-      <div class="stat"><span class="stat-num" data-target="3">0</span><span class="stat-unit">年目</span><span class="stat-label">DX推進担当</span></div>
+  <section id="stats" class="border-y border-slate-100 bg-slate-50/70">
+    <div class="max-w-container mx-auto grid grid-cols-2 gap-px px-6 py-4 md:grid-cols-4">
+      <div class="px-4 py-8 text-center">
+        <div class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="12">0</div>
+        <div class="mt-1 text-sm text-slate-400">投稿記事</div>
+      </div>
+      <div class="px-4 py-8 text-center">
+        <div class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="2">0</div>
+        <div class="mt-1 text-sm text-slate-400">マガジン</div>
+      </div>
+      <div class="px-4 py-8 text-center">
+        <div class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="8">0</div>
+        <div class="mt-1 text-sm text-slate-400">英語教員歴（年）</div>
+      </div>
+      <div class="px-4 py-8 text-center">
+        <div class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="3">0</div>
+        <div class="mt-1 text-sm text-slate-400">DX推進（年目）</div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- ░░ About ░░ -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="section-label">01 — About</span>
-        <h2 class="section-title">私について</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-main">
-          <p class="about-lead reveal-up">「現場で本当に使えるか」を、<br>いちばん大切にしています。</p>
-          <p class="about-body reveal-up">高校で英語を教えながら、学校のDX推進も担当しています。授業準備へのAI活用、iPadを使った授業実践、校内の業務改善——教育現場のリアルな取り組みを、日々試しては記録しています。</p>
-          <p class="about-body reveal-up">特別な機材も、潤沢な予算もありません。あるのは「目の前の生徒のために、できることを一つずつ」という姿勢だけ。だからこそ、うまくいった事例だけでなく、つまずきや失敗もそのまま書いています。同じ壁にぶつかっている先生の、ほんの少しのヒントになればと思っています。</p>
-          <blockquote class="about-quote reveal-up">テクノロジーは目的じゃない。<br>生徒と向き合う時間を増やすための、手段です。</blockquote>
-          <div class="skill-row">
-            <div class="skill-card reveal-up" style="--d:.05s"><span class="skill-ico"><svg class="ico"><use href="#i-cap"/></svg></span><div><div class="skill-name">英語教育</div><div class="skill-desc">高校英語・授業づくり</div></div></div>
-            <div class="skill-card reveal-up" style="--d:.13s"><span class="skill-ico"><svg class="ico"><use href="#i-cpu"/></svg></span><div><div class="skill-name">AI活用</div><div class="skill-desc">授業準備・プロンプト設計</div></div></div>
-            <div class="skill-card reveal-up" style="--d:.21s"><span class="skill-ico"><svg class="ico"><use href="#i-device"/></svg></span><div><div class="skill-name">DX推進</div><div class="skill-desc">iPad・校内改革</div></div></div>
+  <section id="about" class="mx-auto max-w-container px-6 py-24 md:py-32">
+    <div class="reveal mb-14">
+      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">01 — About</div>
+      <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">私について</h2>
+    </div>
+    <div class="grid gap-14 lg:grid-cols-[1fr_380px]">
+      <div>
+        <p class="reveal font-display text-2xl font-bold leading-relaxed text-slate-900 md:text-[1.7rem]">
+          「現場で本当に使えるか」を、<br>いちばん大切にしています。
+        </p>
+        <p class="reveal mt-6 leading-loose text-slate-500" style="--d:.06s">
+          高校で英語を教えながら、学校のDX推進も担当しています。授業準備へのAI活用、iPadを使った授業実践、校内の業務改善——教育現場のリアルな取り組みを、日々試しては記録しています。
+        </p>
+        <p class="reveal mt-4 leading-loose text-slate-500" style="--d:.12s">
+          特別な機材も、潤沢な予算もありません。あるのは「目の前の生徒のために、できることを一つずつ」という姿勢だけ。だからこそ、うまくいった事例だけでなく、つまずきや失敗もそのまま書いています。同じ壁にぶつかっている先生の、ほんの少しのヒントになればと思っています。
+        </p>
+        <blockquote class="reveal mt-8 border-l-4 border-blue-500 pl-6 font-display text-lg font-bold leading-relaxed text-slate-800" style="--d:.18s">
+          テクノロジーは目的じゃない。<br>生徒と向き合う時間を増やすための、手段です。
+        </blockquote>
+        <div class="mt-10 grid gap-3.5">
+          <div class="reveal flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60" style="--d:.05s">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600"><svg class="ico h-6 w-6"><use href="#i-cap"/></svg></span>
+            <div><div class="font-bold text-slate-900">英語教育</div><div class="text-sm text-slate-500">高校英語・授業づくり</div></div>
+          </div>
+          <div class="reveal flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60" style="--d:.12s">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-indigo-50 text-indigo-600"><svg class="ico h-6 w-6"><use href="#i-cpu"/></svg></span>
+            <div><div class="font-bold text-slate-900">AI活用</div><div class="text-sm text-slate-500">授業準備・プロンプト設計</div></div>
+          </div>
+          <div class="reveal flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60" style="--d:.19s">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600"><svg class="ico h-6 w-6"><use href="#i-device"/></svg></span>
+            <div><div class="font-bold text-slate-900">DX推進</div><div class="text-sm text-slate-500">iPad・校内改革</div></div>
           </div>
         </div>
-        <aside class="about-side reveal-up" style="--d:.1s">
-          <div class="note-widget">
-            <div class="note-widget-label">発信先</div>
-            <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="note-widget-main">
-              <span class="note-logo">note</span>
-              <span class="note-meta">
-                <span class="note-name">英語教員のDX日誌</span>
-                <span class="note-url">note.com/english_dx</span>
-              </span>
-              <span class="note-go">→</span>
+      </div>
+
+      <aside class="reveal" style="--d:.1s">
+        <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <div class="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500"></div>
+          <div class="p-7">
+            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">発信先</div>
+            <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mt-4 flex items-center gap-3.5 rounded-2xl border border-slate-200 p-4 transition hover:border-blue-200 hover:bg-blue-50/40">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#41C9B4] font-display text-base font-extrabold text-white">note</span>
+              <span class="min-w-0"><span class="block font-bold text-slate-900">英語教員のDX日誌</span><span class="block text-sm text-slate-400">note.com/english_dx</span></span>
+              <svg class="ico ml-auto h-5 w-5 text-slate-300"><use href="#i-arrow"/></svg>
             </a>
-            <div class="mag-list">
-              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><svg class="ico mag-ico"><use href="#i-flask"/></svg>英語授業 lab with AI<span class="mag-count">4本</span></a>
-              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><svg class="ico mag-ico"><use href="#i-device"/></svg>DX日誌<span class="mag-count">4本</span></a>
+            <div class="mt-4 grid gap-2.5">
+              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="flex items-center gap-2.5 rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-600 transition hover:border-blue-200 hover:bg-blue-50/40"><svg class="ico h-4 w-4 text-blue-600"><use href="#i-flask"/></svg>英語授業 lab with AI<span class="ml-auto text-xs text-slate-400">4本</span></a>
+              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="flex items-center gap-2.5 rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-600 transition hover:border-blue-200 hover:bg-blue-50/40"><svg class="ico h-4 w-4 text-violet-600"><use href="#i-device"/></svg>DX日誌<span class="ml-auto text-xs text-slate-400">4本</span></a>
             </div>
           </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
     </div>
   </section>
 
   <!-- ░░ Articles ░░ -->
-  <section id="articles" class="section section-alt">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="section-label">02 — Articles</span>
-        <h2 class="section-title">最近の記事</h2>
-        <p class="section-sub">Noteで更新中。有料記事もあります。</p>
+  <section id="articles" class="bg-slate-50/70 py-24 md:py-32">
+    <div class="mx-auto max-w-container px-6">
+      <div class="reveal mb-14">
+        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">02 — Articles</div>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">最近の記事</h2>
+        <p class="mt-4 text-slate-500">Noteで更新中。有料記事もあります。</p>
       </div>
-      <div id="articlesWrap" class="articles-wrap">
-        <div class="loading"><span></span><span></span><span></span></div>
+      <div id="articlesWrap">
+        <div class="flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
       </div>
-      <div class="articles-footer reveal-up">
-        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="btn-outline">すべての記事を見る →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ░░ 英検対策 (Materials) ░░ -->
-  <section id="materials" class="section">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="section-label">03 — Eiken</span>
-        <h2 class="section-title">英検対策教材</h2>
-        <p class="section-sub">授業・自学で使えるオリジナルワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
-      </div>
-      <div id="materialGrid" class="material-grid">
-        <div class="loading"><span></span><span></span><span></span></div>
+      <div class="reveal mt-12 text-center">
+        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-3.5 font-bold text-slate-700 transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-600 hover:shadow-md">すべての記事を見る <svg class="ico h-4 w-4"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ░░ プロンプト集 (Prompts) ░░ -->
-  <section id="prompts" class="section section-alt">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="section-label">04 — Prompts</span>
-        <h2 class="section-title">AIプロンプト集</h2>
-        <p class="section-sub">授業準備・教材作成・校務にそのまま使えるプロンプト。クリックでコピーできます。</p>
+  <!-- ░░ 英検対策 ░░ -->
+  <section id="materials" class="mx-auto max-w-container px-6 py-24 md:py-32">
+    <div class="reveal mb-14">
+      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">03 — Eiken</div>
+      <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">英検対策教材</h2>
+      <p class="mt-4 max-w-2xl text-slate-500">授業・自学で使えるオリジナルワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
+    </div>
+    <div id="materialGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="col-span-full flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
+    </div>
+  </section>
+
+  <!-- ░░ プロンプト集 ░░ -->
+  <section id="prompts" class="bg-slate-50/70 py-24 md:py-32">
+    <div class="mx-auto max-w-container px-6">
+      <div class="reveal mb-14">
+        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">04 — Prompts</div>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">AIプロンプト集</h2>
+        <p class="mt-4 max-w-2xl text-slate-500">授業準備・教材作成・校務にそのまま使えるプロンプト。クリックでコピーできます。</p>
       </div>
-      <div id="promptSection"></div>
+      <div id="promptSection" class="space-y-12"></div>
     </div>
   </section>
 
   <!-- ░░ Contact ░░ -->
-  <section id="contact" class="section section-alt">
-    <div class="container">
-      <div class="section-head reveal-up">
-        <span class="section-label">05 — Contact</span>
-        <h2 class="section-title">Contact</h2>
-        <p class="section-sub">コメント・感想・お問い合わせはこちらから。</p>
-      </div>
-      <div class="contact-grid">
-        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="contact-card reveal-up">
-          <div class="contact-glow note-glow"></div>
-          <div class="contact-top"><span class="contact-icon note-icon">note</span><span class="contact-arrow">↗</span></div>
-          <h3>Note</h3>
-          <p>記事へのコメント・感想はNoteのコメント欄にどうぞ</p>
-          <span class="contact-url">note.com/english_dx</span>
-        </a>
-        <a href="https://x.com/dx_eigo_nikki" target="_blank" rel="noopener" class="contact-card reveal-up" style="--d:.12s">
-          <div class="contact-glow x-glow"></div>
-          <div class="contact-top"><span class="contact-icon x-icon">𝕏</span><span class="contact-arrow">↗</span></div>
-          <h3>X（旧Twitter）</h3>
-          <p>日々の気づきや教育×AIの話題をポストしています</p>
-          <span class="contact-url">@dx_eigo_nikki</span>
-        </a>
-      </div>
+  <section id="contact" class="mx-auto max-w-container px-6 py-24 md:py-32">
+    <div class="reveal mb-14">
+      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">05 — Contact</div>
+      <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">Contact</h2>
+      <p class="mt-4 text-slate-500">コメント・感想・お問い合わせはこちらから。</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-9 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/60">
+        <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#41C9B4]/10 blur-2xl transition group-hover:bg-[#41C9B4]/20"></div>
+        <div class="flex items-start justify-between">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-[#41C9B4] font-display font-extrabold text-white">note</span>
+          <svg class="ico h-6 w-6 text-slate-300 transition group-hover:translate-x-1 group-hover:text-blue-600"><use href="#i-arrow"/></svg>
+        </div>
+        <h3 class="mt-6 text-lg font-extrabold text-slate-900">Note</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">記事へのコメント・感想はNoteのコメント欄にどうぞ</p>
+        <span class="mt-4 inline-block text-sm font-semibold text-blue-600">note.com/english_dx</span>
+      </a>
+      <a href="https://x.com/dx_eigo_nikki" target="_blank" rel="noopener" class="reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-9 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/60" style="--d:.1s">
+        <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-slate-900/5 blur-2xl transition group-hover:bg-slate-900/10"></div>
+        <div class="flex items-start justify-between">
+          <span class="grid h-14 w-14 place-items-center rounded-2xl bg-slate-900 text-xl font-extrabold text-white">𝕏</span>
+          <svg class="ico h-6 w-6 text-slate-300 transition group-hover:translate-x-1 group-hover:text-blue-600"><use href="#i-arrow"/></svg>
+        </div>
+        <h3 class="mt-6 text-lg font-extrabold text-slate-900">X（旧Twitter）</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">日々の気づきや教育×AIの話題をポストしています</p>
+        <span class="mt-4 inline-block text-sm font-semibold text-blue-600">@dx_eigo_nikki</span>
+      </a>
     </div>
   </section>
 
   <!-- ░░ Footer ░░ -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo"><span class="logo-bracket">[</span>DX<span class="logo-accent">English</span>Teacher<span class="logo-bracket">]</span></div>
-      <p class="footer-copy">© 2026 英語教員のDX日誌</p>
-      <div class="footer-links">
-        <a href="https://note.com/english_dx" target="_blank" rel="noopener">Note</a>
-        <a href="https://x.com/dx_eigo_nikki" target="_blank" rel="noopener">X</a>
+  <footer class="border-t border-slate-100 bg-slate-50/70">
+    <div class="mx-auto flex max-w-container flex-col items-center justify-between gap-5 px-6 py-9 sm:flex-row">
+      <div class="font-display text-sm font-extrabold text-slate-900"><span class="text-slate-300">[</span>DX<span class="text-blue-600">English</span>Teacher<span class="text-slate-300">]</span></div>
+      <p class="text-sm text-slate-400">© 2026 英語教員のDX日誌</p>
+      <div class="flex gap-5">
+        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="text-sm text-slate-400 transition hover:text-blue-600">Note</a>
+        <a href="https://x.com/dx_eigo_nikki" target="_blank" rel="noopener" class="text-sm text-slate-400 transition hover:text-blue-600">X</a>
       </div>
     </div>
   </footer>
 
 <script>
-// ── Navbar blur on scroll ──
+// ── Navbar：スクロールで背景 ──
 const navbar = document.getElementById('navbar');
-addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 30), { passive: true });
+addEventListener('scroll', () => {
+  navbar.classList.toggle('bg-white/85', scrollY > 30);
+  navbar.classList.toggle('backdrop-blur-lg', scrollY > 30);
+  navbar.classList.toggle('shadow-sm', scrollY > 30);
+  navbar.classList.toggle('shadow-slate-200/50', scrollY > 30);
+}, { passive: true });
 
-// ── Mobile menu ──
+// ── モバイルメニュー ──
 const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  navToggle.classList.toggle('active');
-});
+const mobileMenu = document.getElementById('mobileMenu');
+navToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-// ── Smooth scroll (in-page anchors only) ──
+// ── スムーズスクロール（ページ内アンカーのみ）──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
     if (id === '#') { e.preventDefault(); return; }
-    const target = document.querySelector(id);
-    if (!target) return;
+    const t = document.querySelector(id);
+    if (!t) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('active');
+    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// ── Hero reveal on load ──
-addEventListener('load', () => {
-  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('show'));
-});
-
-// ── Scroll reveal（io はこれ以降の描画関数が参照するので先に定義）──
+// ── スクロールリビール（io は描画関数より前に定義）──
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 function observeReveals() {
-  document.querySelectorAll('.reveal-up:not(.show)').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal:not(.show)').forEach(el => io.observe(el));
 }
-observeReveals();
-
-// ── 英検教材（materials.json から自動描画）──
-const ROLE_LABEL = { student: '問題', answer: '解答・解説', teacher: '指導用' };
-const ROLE_PRIMARY = { student: true };
-async function loadMaterials() {
-  const grid = document.getElementById('materialGrid');
-  try {
-    const res = await fetch('materials.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('no file');
-    const { materials } = await res.json();
-    if (!materials || !materials.length) throw new Error('empty');
-    grid.innerHTML = materials.map((m, i) => {
-      const btns = Object.entries(m.files).map(([role, path]) =>
-        `<a href="${path}" download class="material-dl${ROLE_PRIMARY[role] ? ' primary' : ''}">${ROLE_LABEL[role] || role} ↓</a>`
-      ).join('');
-      return `<div class="material-card reveal-up" style="--d:${(i % 3) * .08}s">
-        <div class="material-thumb">
-          <span class="material-grade">${m.grade}</span>
-          <span class="material-section">${m.section}</span>
-          <svg class="ico material-ico"><use href="#i-${m.icon || 'book'}"/></svg>
-        </div>
-        <div class="material-info">
-          <h3 class="material-title">${m.lessonNo}　${m.title}</h3>
-          <div class="material-actions">${btns}</div>
-        </div>
-      </div>`;
-    }).join('');
-    observeReveals();
-  } catch {
-    grid.innerHTML = `<div class="materials-empty">教材は準備中です。順次公開していきます。</div>`;
-  }
-}
-loadMaterials();
-
-// ── プロンプト集（prompts.js から描画）──
-const I_KEY = { cap: 'i-cap', pen: 'i-pen', folder: 'i-folder', cpu: 'i-cpu', book: 'i-book' };
-function renderPrompts() {
-  const wrap = document.getElementById('promptSection');
-  if (!wrap || !window.PROMPTS) return;
-  wrap.innerHTML = window.PROMPTS.map(cat => {
-    const cards = cat.prompts.map(p => {
-      const src = p.source ? `<a href="${esc(p.source.url)}" target="_blank" rel="noopener" class="prompt-source">${esc(p.source.label)} →</a>` : '';
-      return `<div class="prompt-card${p.featured ? ' featured-prompt' : ''}">
-        <div class="prompt-head">
-          <span class="prompt-name">${p.featured ? '<span class="prompt-star">★</span>' : ''}${esc(p.title)}</span>
-          <button class="copy-btn" type="button">コピー</button>
-        </div>
-        <p class="prompt-text">${esc(p.text)}</p>
-        ${src}
-      </div>`;
-    }).join('');
-    return `<div class="prompt-cat reveal-up">
-      <h3 class="prompt-cat-title"><svg class="ico"><use href="#${I_KEY[cat.icon] || 'i-cap'}"/></svg>${esc(cat.name)}</h3>
-      <div class="prompt-list">${cards}</div>
-    </div>`;
-  }).join('');
-  observeReveals();
-}
-renderPrompts();
-
-// コピー（イベント委譲：動的生成カードにも対応）
-document.getElementById('promptSection')?.addEventListener('click', (e) => {
-  const btn = e.target.closest('.copy-btn');
-  if (!btn) return;
-  const text = btn.closest('.prompt-card').querySelector('.prompt-text').textContent;
-  // 同期コピー（iframe内でも確実）
-  try {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.focus(); ta.select();
-    document.execCommand('copy'); ta.remove();
-  } catch {}
-  // モダンAPIでも（実サイト用・成否は問わない）
-  if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
-  // フィードバックは即時に
-  btn.textContent = '✓ コピー済み';
-  btn.classList.add('copied');
-  setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 1800);
+// ヒーローは即表示
+addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#home .reveal').forEach(el => el.classList.add('show'));
 });
 
-// ── Stat counters ──
+// ── 数字カウントアップ ──
 const statObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.querySelectorAll('.stat-num').forEach(el => {
       const target = +el.dataset.target; let cur = 0;
-      const tick = () => { cur = Math.min(cur + Math.ceil(target / 30), target); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
+      const tick = () => { cur = Math.min(cur + Math.ceil(target / 28), target); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
       tick();
     });
     statObs.unobserve(e.target);
   });
 }, { threshold: 0.5 });
-statObs.observe(document.querySelector('.stats-band'));
+statObs.observe(document.getElementById('stats'));
 
-// ── Articles ──
+function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+// ── 記事（Note RSS + フォールバック）──
 const STATIC_ARTICLES = [
   { title:'先生たちがiPadを使い始めた日。きっかけは研修じゃなかった', url:'https://note.com/english_dx/n/nc5c6f0443c3f', img:'https://assets.st-note.com/production/uploads/images/288790450/rectangle_large_type_2_66292a563ef5a0b83fa48cd586fad154.png?width=800', date:'2026/06/27' },
   { title:'AIに何を聞けばいいかわからない。その悩みを解決する一文', url:'https://note.com/english_dx/n/nf23e98940575', img:'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800', date:'2026/06/26' },
@@ -421,33 +420,30 @@ const STATIC_ARTICLES = [
   { title:'AIに授業を「相談」する。プロンプトなしで始める方法', url:'https://note.com/english_dx/n/nff7931460f73', img:'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800', date:'2026/06/18' },
 ];
 
-function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-function articleCard(a, i, featured) {
-  const ph = `<div class=art-ph>${String(i+1).padStart(2,'0')}</div>`;
-  const img = a.img ? `<img src="${esc(a.img)}" alt="" class="art-img" loading="lazy" onerror="this.outerHTML='${ph.replace(/"/g,'&quot;')}'">` : ph;
-  if (featured) {
-    return `<a href="${esc(a.url)}" target="_blank" rel="noopener" class="featured reveal-up">
-      <div class="featured-media"><span class="featured-badge">最新記事</span>${img}</div>
-      <div class="featured-body">
-        ${a.date ? `<span class="art-date">${esc(a.date)}</span>` : ''}
-        <h3 class="featured-title">${esc(a.title)}</h3>
-        <span class="art-read">記事を読む →</span>
-      </div></a>`;
-  }
-  return `<a href="${esc(a.url)}" target="_blank" rel="noopener" class="art-card reveal-up" style="--d:${(i%3)*.08}s">
-    <div class="art-media">${img}</div>
-    <div class="art-info">
-      ${a.date ? `<span class="art-date">${esc(a.date)}</span>` : ''}
-      <h3 class="art-title">${esc(a.title)}</h3>
-      <span class="art-read">読む →</span>
-    </div></a>`;
-}
+function articlePlaceholder(i){ return `<div class="absolute inset-0 grid place-items-center bg-gradient-to-br from-slate-100 to-slate-200 font-display text-3xl font-extrabold text-slate-300">0${i+1}</div>`; }
 
 function renderArticles(items) {
-  const wrap = document.getElementById('articlesWrap');
-  const [first, ...rest] = items;
-  wrap.innerHTML = articleCard(first, 0, true) + `<div class="art-grid">${rest.map((a,i)=>articleCard(a,i+1,false)).join('')}</div>`;
+  const [a0, ...rest] = items;
+  const featured = `<a href="${esc(a0.url)}" target="_blank" rel="noopener" class="reveal group mb-6 grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/60 lg:grid-cols-[1.15fr_1fr]">
+    <div class="relative min-h-[260px] overflow-hidden">
+      <span class="absolute left-4 top-4 z-10 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow">最新記事</span>
+      ${a0.img ? `<img src="${esc(a0.img)}" alt="" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" onerror="this.outerHTML='${articlePlaceholder(0).replace(/"/g,'&quot;')}'">` : articlePlaceholder(0)}
+    </div>
+    <div class="flex flex-col justify-center gap-3 p-9">
+      ${a0.date ? `<span class="text-sm text-slate-400">${esc(a0.date)}</span>` : ''}
+      <h3 class="font-display text-xl font-extrabold leading-snug text-slate-900">${esc(a0.title)}</h3>
+      <span class="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-blue-600">記事を読む <svg class="ico h-4 w-4"><use href="#i-arrow"/></svg></span>
+    </div></a>`;
+  const grid = rest.map((a, i) => `<a href="${esc(a.url)}" target="_blank" rel="noopener" class="reveal group block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/60" style="--d:${(i%3)*.07}s">
+    <div class="relative aspect-[16/9] overflow-hidden">
+      ${a.img ? `<img src="${esc(a.img)}" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" onerror="this.outerHTML='${articlePlaceholder(i+1).replace(/"/g,'&quot;')}'">` : articlePlaceholder(i+1)}
+    </div>
+    <div class="p-6">
+      ${a.date ? `<span class="text-xs text-slate-400">${esc(a.date)}</span>` : ''}
+      <h3 class="mt-2 font-bold leading-snug text-slate-800 line-clamp-3">${esc(a.title)}</h3>
+      <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-blue-600">読む <svg class="ico h-3.5 w-3.5"><use href="#i-arrow"/></svg></span>
+    </div></a>`).join('');
+  document.getElementById('articlesWrap').innerHTML = featured + `<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">${grid}</div>`;
   observeReveals();
 }
 
@@ -474,6 +470,92 @@ async function loadArticles() {
   }
 }
 loadArticles();
+
+// ── 英検教材（materials.json）──
+const ROLE_LABEL = { student: '問題', answer: '解答・解説', teacher: '指導用' };
+async function loadMaterials() {
+  const grid = document.getElementById('materialGrid');
+  try {
+    const res = await fetch('materials.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('no file');
+    const { materials } = await res.json();
+    if (!materials || !materials.length) throw new Error('empty');
+    grid.innerHTML = materials.map((m, i) => {
+      const btns = Object.entries(m.files).map(([role, path]) => {
+        const primary = role === 'student';
+        const cls = primary
+          ? 'inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-blue-600/20 transition hover:-translate-y-0.5'
+          : 'inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-blue-200 hover:text-blue-600';
+        return `<a href="${esc(path)}" download class="${cls}">${ROLE_LABEL[role] || role} ↓</a>`;
+      }).join('');
+      return `<div class="reveal flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/60" style="--d:${(i%3)*.07}s">
+        <div class="relative grid aspect-[16/9] place-items-center bg-gradient-to-br from-blue-50 to-indigo-50">
+          <span class="absolute left-4 top-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-bold text-white shadow">${esc(m.grade)}</span>
+          <span class="absolute right-4 top-4 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-500 backdrop-blur">${esc(m.section)}</span>
+          <svg class="ico h-11 w-11 text-blue-600/80"><use href="#i-${esc(m.icon || 'book')}"/></svg>
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="font-bold leading-snug text-slate-900">${esc(m.lessonNo)}　${esc(m.title)}</h3>
+          <div class="mt-5 flex flex-wrap gap-2">${btns}</div>
+        </div>
+      </div>`;
+    }).join('');
+    observeReveals();
+  } catch {
+    grid.innerHTML = `<div class="col-span-full rounded-2xl border border-dashed border-slate-300 py-16 text-center text-slate-400">教材は準備中です。順次公開していきます。</div>`;
+  }
+}
+loadMaterials();
+
+// ── プロンプト集（prompts.js）──
+const I_KEY = { cap: 'i-cap', pen: 'i-pen', folder: 'i-folder', cpu: 'i-cpu', book: 'i-book' };
+function renderPrompts() {
+  const wrap = document.getElementById('promptSection');
+  if (!wrap || !window.PROMPTS) return;
+  wrap.innerHTML = window.PROMPTS.map(cat => {
+    const cards = cat.prompts.map(p => {
+      const src = p.source ? `<a href="${esc(p.source.url)}" target="_blank" rel="noopener" class="mt-4 inline-block text-sm font-semibold text-blue-600 transition hover:opacity-70">${esc(p.source.label)} →</a>` : '';
+      const featuredCls = p.featured ? ' sm:col-span-2 ring-1 ring-blue-200 bg-gradient-to-b from-blue-50/60 to-white' : '';
+      const star = p.featured ? '<span class="mr-1.5 text-blue-500">★</span>' : '';
+      return `<div class="prompt-card reveal flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/50${featuredCls}">
+        <div class="mb-4 flex items-start justify-between gap-4">
+          <span class="font-bold leading-snug text-slate-900">${star}${esc(p.title)}</span>
+          <button class="copy-btn shrink-0 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white" type="button">コピー</button>
+        </div>
+        <p class="prompt-text scrollbar-thin max-h-44 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-600${p.featured ? ' max-h-72' : ''}">${esc(p.text)}</p>
+        ${src}
+      </div>`;
+    }).join('');
+    return `<div class="reveal">
+      <h3 class="mb-6 flex items-center gap-3 border-b border-slate-200 pb-4 font-display text-xl font-extrabold text-slate-900">
+        <svg class="ico h-6 w-6 text-blue-600"><use href="#${I_KEY[cat.icon] || 'i-cap'}"/></svg>${esc(cat.name)}
+      </h3>
+      <div class="grid gap-5 sm:grid-cols-2">${cards}</div>
+    </div>`;
+  }).join('');
+  observeReveals();
+}
+renderPrompts();
+
+// コピー（イベント委譲）
+document.getElementById('promptSection')?.addEventListener('click', (e) => {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+  const text = btn.closest('.prompt-card').querySelector('.prompt-text').textContent;
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); ta.remove();
+  } catch {}
+  if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+  btn.textContent = '✓ コピー済み';
+  btn.classList.add('bg-emerald-500','text-white','border-emerald-500');
+  setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('bg-emerald-500','text-white','border-emerald-500'); }, 1800);
+});
+
+// 初回リビール登録
+observeReveals();
 </script>
 </body>
 </html>
