@@ -1,6 +1,32 @@
 {
   "materials": [
     {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L01",
+      "title": "リモートワークと地方移住",
+      "files": {
+        "student": "materials/2kyu_reading_L01_student.pdf",
+        "teacher": "materials/2kyu_reading_L01_teacher.pdf",
+        "answer": "materials/2kyu_reading_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級",
+      "gradeOrder": 4,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L01",
+      "title": "地域フードシェア",
+      "files": {
+        "student": "materials/pre2kyu_reading_L01_student.pdf",
+        "teacher": "materials/pre2kyu_reading_L01_teacher.pdf",
+        "answer": "materials/pre2kyu_reading_L01_answer.pdf"
+      }
+    },
+    {
       "grade": "3級",
       "gradeOrder": 5,
       "section": "Eメール",
