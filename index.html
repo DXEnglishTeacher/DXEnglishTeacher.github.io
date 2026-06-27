@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="prompts.js"></script>
 </head>
 <body>
 
@@ -182,85 +183,7 @@
         <h2 class="section-title">AIプロンプト集</h2>
         <p class="section-sub">授業準備・教材作成・校務にそのまま使えるプロンプト。クリックでコピーできます。</p>
       </div>
-
-      <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-cap"/></svg>授業準備</h3>
-        <div class="prompt-list">
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">レベル別の長文読解問題を作る</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">あなたは高校英語の教材作成の専門家です。以下の条件で英語長文読解問題を作成してください。
-・トピック：【環境問題】
-・語数：300語程度
-・難易度：CEFR B1（高校2年生レベル）
-・設問：内容一致問題3問、下線部の意味を問う問題2問（すべて選択式・日本語）
-・本文の後に、重要語句リスト（語＋日本語訳）と全文の日本語訳も付けてください。</p>
-          </div>
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">導入の発問（オーラルイントロダクション）を考える</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">高校英語の授業で、次の題材に入る前のオーラルイントロダクションを考えてください。
-・題材：【本文のテーマをここに記入】
-・生徒のレベル：英検準2級程度
-・目的：生徒の興味を引き、既習知識と新出内容をつなぐ
-英語の発問を5つ、それぞれに想定される生徒の回答例と、教師の切り返し例を日本語の補足付きで提示してください。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-pen"/></svg>教材作成</h3>
-        <div class="prompt-list">
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">単語の例文・コロケーションを作る</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">次の英単語について、高校生が覚えやすい教材を作ってください。
-・単語：【consider】
-出力：①基本の意味（日本語）②よく使うコロケーション3つ ③高校生に身近な場面の例文3つ（英文＋日本語訳）④間違えやすいポイント。表形式で。</p>
-          </div>
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">文法解説をやさしい言葉に書き換える</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">次の英文法項目を、英語が苦手な高校生にも分かるように、専門用語をできるだけ使わずに説明してください。
-・項目：【仮定法過去】
-・条件：身近なたとえ話を1つ入れる／例文は3つ（英文＋日本語訳）／最後に「ここだけ覚えればOK」の1行まとめを付ける。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-folder"/></svg>校務効率化</h3>
-        <div class="prompt-list">
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">保護者向けの連絡文を作る</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">保護者向けのお知らせ文を作成してください。
-・内容：【内容をここに記入】
-・条件：丁寧でやわらかい敬語／A4で読みやすい長さ／要点は箇条書き／日時や持ち物は目立つように。
-最後に、より簡潔にしたショート版も付けてください。</p>
-          </div>
-          <div class="prompt-card">
-            <div class="prompt-head">
-              <span class="prompt-name">所見・コメントの下書きを作る</span>
-              <button class="copy-btn" type="button">コピー</button>
-            </div>
-            <p class="prompt-text">生徒の通知表の所見の下書きを作成してください。
-・生徒の様子：【具体的なエピソードを記入】
-・条件：肯定的な視点で／120字程度／本人と保護者が読んで前向きになれる表現／決まり文句になりすぎない。
-表現の異なる案を3パターン出してください。</p>
-          </div>
-        </div>
-      </div>
+      <div id="promptSection"></div>
     </div>
   </section>
 
@@ -330,6 +253,20 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// ── Hero reveal on load ──
+addEventListener('load', () => {
+  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('show'));
+});
+
+// ── Scroll reveal（io はこれ以降の描画関数が参照するので先に定義）──
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+function observeReveals() {
+  document.querySelectorAll('.reveal-up:not(.show)').forEach(el => io.observe(el));
+}
+observeReveals();
+
 // ── 英検教材（materials.json から自動描画）──
 const ROLE_LABEL = { student: '問題', answer: '解答・解説', teacher: '指導用' };
 const ROLE_PRIMARY = { student: true };
@@ -363,36 +300,51 @@ async function loadMaterials() {
 }
 loadMaterials();
 
-// ── Prompt copy buttons ──
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    const text = btn.closest('.prompt-card').querySelector('.prompt-text').textContent.trim();
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); ta.remove();
-    }
-    btn.textContent = '✓ コピー済み';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 1800);
-  });
-});
-
-// ── Hero reveal on load ──
-addEventListener('load', () => {
-  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('show'));
-});
-
-// ── Scroll reveal ──
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-function observeReveals() {
-  document.querySelectorAll('.reveal-up:not(.show)').forEach(el => io.observe(el));
+// ── プロンプト集（prompts.js から描画）──
+const I_KEY = { cap: 'i-cap', pen: 'i-pen', folder: 'i-folder', cpu: 'i-cpu', book: 'i-book' };
+function renderPrompts() {
+  const wrap = document.getElementById('promptSection');
+  if (!wrap || !window.PROMPTS) return;
+  wrap.innerHTML = window.PROMPTS.map(cat => {
+    const cards = cat.prompts.map(p => {
+      const src = p.source ? `<a href="${esc(p.source.url)}" target="_blank" rel="noopener" class="prompt-source">${esc(p.source.label)} →</a>` : '';
+      return `<div class="prompt-card${p.featured ? ' featured-prompt' : ''}">
+        <div class="prompt-head">
+          <span class="prompt-name">${p.featured ? '<span class="prompt-star">★</span>' : ''}${esc(p.title)}</span>
+          <button class="copy-btn" type="button">コピー</button>
+        </div>
+        <p class="prompt-text">${esc(p.text)}</p>
+        ${src}
+      </div>`;
+    }).join('');
+    return `<div class="prompt-cat reveal-up">
+      <h3 class="prompt-cat-title"><svg class="ico"><use href="#${I_KEY[cat.icon] || 'i-cap'}"/></svg>${esc(cat.name)}</h3>
+      <div class="prompt-list">${cards}</div>
+    </div>`;
+  }).join('');
+  observeReveals();
 }
-observeReveals();
+renderPrompts();
+
+// コピー（イベント委譲：動的生成カードにも対応）
+document.getElementById('promptSection')?.addEventListener('click', (e) => {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+  const text = btn.closest('.prompt-card').querySelector('.prompt-text').textContent;
+  // 同期コピー（iframe内でも確実）
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand('copy'); ta.remove();
+  } catch {}
+  // モダンAPIでも（実サイト用・成否は問わない）
+  if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+  // フィードバックは即時に
+  btn.textContent = '✓ コピー済み';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 1800);
+});
 
 // ── Stat counters ──
 const statObs = new IntersectionObserver((entries) => {

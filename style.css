@@ -324,6 +324,12 @@ img { display: block; max-width: 100%; }
 .prompt-text { font-size: .85rem; line-height: 1.75; color: var(--muted); white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 15px 17px; max-height: 168px; overflow-y: auto; }
 .prompt-text::-webkit-scrollbar { width: 7px; }
 .prompt-text::-webkit-scrollbar-thumb { background: var(--faint); border-radius: 4px; }
+.prompt-source { display: inline-block; margin-top: 14px; font-size: .8rem; font-weight: 600; color: var(--blue); transition: opacity var(--t); }
+.prompt-source:hover { opacity: .7; }
+.prompt-star { color: var(--cyan); margin-right: 6px; }
+/* 目玉プロンプトは2カラムぶち抜きで大きく見せる */
+.prompt-card.featured-prompt { grid-column: 1 / -1; border-color: var(--line-2); background: linear-gradient(180deg, rgba(74,158,255,.05), var(--card)); }
+.prompt-card.featured-prompt .prompt-text { max-height: 260px; }
 
 /* ════════ Contact ════════ */
 .contact-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
