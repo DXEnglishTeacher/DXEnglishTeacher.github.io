@@ -12,6 +12,18 @@
 </head>
 <body>
 
+  <!-- ░░ アイコンスプライト（ラインアイコン） ░░ -->
+  <svg width="0" height="0" class="svg-sprite" aria-hidden="true">
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .24.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.75-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.45 15h11.1"/><path d="M8.5 2h7"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.38 3.62a2.12 2.12 0 0 1 3 3L7.5 18.5l-4 1 1-4z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  </svg>
+
   <!-- ░░ Navbar ░░ -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
@@ -68,9 +80,9 @@
           <img src="profile.png" alt="英語教員のDX日誌" class="brand-img">
           <div class="brand-shine"></div>
         </div>
-        <div class="float-chip chip-1"><span class="chip-icon">📘</span>英語教員</div>
-        <div class="float-chip chip-2"><span class="chip-icon">🤖</span>AI活用</div>
-        <div class="float-chip chip-3"><span class="chip-icon">📱</span>DX推進</div>
+        <div class="float-chip chip-1"><svg class="ico"><use href="#i-cap"/></svg>英語教員</div>
+        <div class="float-chip chip-2"><svg class="ico"><use href="#i-cpu"/></svg>AI活用</div>
+        <div class="float-chip chip-3"><svg class="ico"><use href="#i-device"/></svg>DX推進</div>
       </div>
     </div>
     <a href="#stats" class="hero-scroll" aria-label="下へスクロール">
@@ -100,12 +112,14 @@
       </div>
       <div class="about-grid">
         <div class="about-main">
-          <p class="about-lead reveal-up">高校で英語を教えながら、<br>学校のDX推進も担当しています。</p>
-          <p class="about-body reveal-up">授業準備へのAI活用、iPadを使った授業実践、校内の業務改善など、教育現場のリアルな取り組みを発信中。成功事例だけでなく、失敗や試行錯誤もそのまま記録しています。同じ課題を抱える先生方のヒントになれば嬉しいです。</p>
+          <p class="about-lead reveal-up">「現場で本当に使えるか」を、<br>いちばん大切にしています。</p>
+          <p class="about-body reveal-up">高校で英語を教えながら、学校のDX推進も担当しています。授業準備へのAI活用、iPadを使った授業実践、校内の業務改善——教育現場のリアルな取り組みを、日々試しては記録しています。</p>
+          <p class="about-body reveal-up">特別な機材も、潤沢な予算もありません。あるのは「目の前の生徒のために、できることを一つずつ」という姿勢だけ。だからこそ、うまくいった事例だけでなく、つまずきや失敗もそのまま書いています。同じ壁にぶつかっている先生の、ほんの少しのヒントになればと思っています。</p>
+          <blockquote class="about-quote reveal-up">テクノロジーは目的じゃない。<br>生徒と向き合う時間を増やすための、手段です。</blockquote>
           <div class="skill-row">
-            <div class="skill-card reveal-up" style="--d:.05s"><span class="skill-emoji">📘</span><div><div class="skill-name">英語教育</div><div class="skill-desc">高校英語・授業づくり</div></div></div>
-            <div class="skill-card reveal-up" style="--d:.13s"><span class="skill-emoji">🤖</span><div><div class="skill-name">AI活用</div><div class="skill-desc">授業準備・プロンプト設計</div></div></div>
-            <div class="skill-card reveal-up" style="--d:.21s"><span class="skill-emoji">📱</span><div><div class="skill-name">DX推進</div><div class="skill-desc">iPad・校内改革</div></div></div>
+            <div class="skill-card reveal-up" style="--d:.05s"><span class="skill-ico"><svg class="ico"><use href="#i-cap"/></svg></span><div><div class="skill-name">英語教育</div><div class="skill-desc">高校英語・授業づくり</div></div></div>
+            <div class="skill-card reveal-up" style="--d:.13s"><span class="skill-ico"><svg class="ico"><use href="#i-cpu"/></svg></span><div><div class="skill-name">AI活用</div><div class="skill-desc">授業準備・プロンプト設計</div></div></div>
+            <div class="skill-card reveal-up" style="--d:.21s"><span class="skill-ico"><svg class="ico"><use href="#i-device"/></svg></span><div><div class="skill-name">DX推進</div><div class="skill-desc">iPad・校内改革</div></div></div>
           </div>
         </div>
         <aside class="about-side reveal-up" style="--d:.1s">
@@ -120,8 +134,8 @@
               <span class="note-go">→</span>
             </a>
             <div class="mag-list">
-              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><span class="mag-dot"></span>🧪 英語授業 lab with AI<span class="mag-count">4本</span></a>
-              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><span class="mag-dot"></span>📱 DX日誌<span class="mag-count">4本</span></a>
+              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><svg class="ico mag-ico"><use href="#i-flask"/></svg>英語授業 lab with AI<span class="mag-count">4本</span></a>
+              <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mag-item"><svg class="ico mag-ico"><use href="#i-device"/></svg>DX日誌<span class="mag-count">4本</span></a>
             </div>
           </div>
         </aside>
@@ -170,7 +184,7 @@
       </div>
 
       <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><span>🎓</span>授業準備</h3>
+        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-cap"/></svg>授業準備</h3>
         <div class="prompt-list">
           <div class="prompt-card">
             <div class="prompt-head">
@@ -199,7 +213,7 @@
       </div>
 
       <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><span>✍️</span>教材作成</h3>
+        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-pen"/></svg>教材作成</h3>
         <div class="prompt-list">
           <div class="prompt-card">
             <div class="prompt-head">
@@ -223,7 +237,7 @@
       </div>
 
       <div class="prompt-cat reveal-up">
-        <h3 class="prompt-cat-title"><span>🗂️</span>校務効率化</h3>
+        <h3 class="prompt-cat-title"><svg class="ico"><use href="#i-folder"/></svg>校務効率化</h3>
         <div class="prompt-list">
           <div class="prompt-card">
             <div class="prompt-head">
@@ -334,7 +348,7 @@ async function loadMaterials() {
         <div class="material-thumb">
           <span class="material-grade">${m.grade}</span>
           <span class="material-section">${m.section}</span>
-          <span class="material-emoji">${m.emoji}</span>
+          <svg class="ico material-ico"><use href="#i-${m.icon || 'book'}"/></svg>
         </div>
         <div class="material-info">
           <h3 class="material-title">${m.lessonNo}　${m.title}</h3>
@@ -396,12 +410,12 @@ statObs.observe(document.querySelector('.stats-band'));
 
 // ── Articles ──
 const STATIC_ARTICLES = [
-  { title:'AIに何を聞けばいいかわからない。その悩みを解決する一文', url:'https://note.com/english_dx/n/nf23e98940575', img:'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800' },
-  { title:'「教科書おもんない」から始まった、AIで作る長文読解', url:'https://note.com/english_dx/n/n6a9d8a05102f', img:'https://assets.st-note.com/production/uploads/images/288041580/rectangle_large_type_2_a4daeeb03ec808ec0fa908e1e50639bf.png?width=800' },
-  { title:'英検一次試験の結果が出た。それでもまだ、間に合う話', url:'https://note.com/english_dx/n/n8ab0d00c0ee0', img:'https://assets.st-note.com/production/uploads/images/287458172/rectangle_large_type_2_42e5787556e76e0400f858b897b6ad17.png?width=800' },
-  { title:'iPadが来た教室で、最初に起きたこと', url:'https://note.com/english_dx/n/n664ff785bfd3', img:'https://assets.st-note.com/production/uploads/images/287336947/rectangle_large_type_2_31e5798e96c44cc1f50b8cc014f78c19.png?width=800' },
-  { title:'AIに授業を「相談」する。プロンプトなしで始める方法', url:'https://note.com/english_dx/n/nff7931460f73', img:'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800' },
-  { title:'授業準備でAIは必要？　正直に答えます', url:'https://note.com/english_dx/n/nbc33dbfe2224', img:'https://assets.st-note.com/production/uploads/images/284985512/rectangle_large_type_2_1f27f18811ce428aa3ccaf0ca9d4e280.png?width=800' },
+  { title:'先生たちがiPadを使い始めた日。きっかけは研修じゃなかった', url:'https://note.com/english_dx/n/nc5c6f0443c3f', img:'https://assets.st-note.com/production/uploads/images/288790450/rectangle_large_type_2_66292a563ef5a0b83fa48cd586fad154.png?width=800', date:'2026/06/27' },
+  { title:'AIに何を聞けばいいかわからない。その悩みを解決する一文', url:'https://note.com/english_dx/n/nf23e98940575', img:'https://assets.st-note.com/production/uploads/images/288693307/rectangle_large_type_2_678025822761799e4e555ed176b83ce2.png?width=800', date:'2026/06/26' },
+  { title:'「教科書おもんない」から始まった、AIで作る長文読解', url:'https://note.com/english_dx/n/n6a9d8a05102f', img:'https://assets.st-note.com/production/uploads/images/288041580/rectangle_large_type_2_a4daeeb03ec808ec0fa908e1e50639bf.png?width=800', date:'2026/06/25' },
+  { title:'英検一次試験の結果が出た。それでもまだ、間に合う話', url:'https://note.com/english_dx/n/n8ab0d00c0ee0', img:'https://assets.st-note.com/production/uploads/images/287458172/rectangle_large_type_2_42e5787556e76e0400f858b897b6ad17.png?width=800', date:'2026/06/23' },
+  { title:'iPadが来た教室で、最初に起きたこと', url:'https://note.com/english_dx/n/n664ff785bfd3', img:'https://assets.st-note.com/production/uploads/images/287336947/rectangle_large_type_2_31e5798e96c44cc1f50b8cc014f78c19.png?width=800', date:'2026/06/21' },
+  { title:'AIに授業を「相談」する。プロンプトなしで始める方法', url:'https://note.com/english_dx/n/nff7931460f73', img:'https://assets.st-note.com/production/uploads/images/285758192/rectangle_large_type_2_0bf19cc4a0b57fd79f08d6bc57cc74d0.png?width=800', date:'2026/06/18' },
 ];
 
 function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }

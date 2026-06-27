@@ -4,7 +4,7 @@
       "grade": "3級",
       "gradeOrder": 5,
       "section": "Eメール",
-      "emoji": "✉️",
+      "icon": "mail",
       "lessonNo": "L01",
       "title": "料理教室",
       "files": {
@@ -17,7 +17,7 @@
       "grade": "3級",
       "gradeOrder": 5,
       "section": "リーディング",
-      "emoji": "📖",
+      "icon": "book",
       "lessonNo": "L01",
       "title": "屋外読書スペース",
       "files": {
@@ -30,7 +30,7 @@
       "grade": "3級",
       "gradeOrder": 5,
       "section": "リーディング",
-      "emoji": "📖",
+      "icon": "book",
       "lessonNo": "L02",
       "title": "地域の修理イベント",
       "files": {
@@ -43,7 +43,7 @@
       "grade": "3級",
       "gradeOrder": 5,
       "section": "リーディング",
-      "emoji": "📖",
+      "icon": "book",
       "lessonNo": "L03",
       "title": "新入生向け校内マップ",
       "files": {
@@ -56,7 +56,7 @@
       "grade": "3級",
       "gradeOrder": 5,
       "section": "意見論述",
-      "emoji": "✍️",
+      "icon": "pen",
       "lessonNo": "L01",
       "title": "友達と宿題",
       "files": {
