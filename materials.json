@@ -14,6 +14,97 @@
       }
     },
     {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L02",
+      "title": "短文空所補充17問",
+      "files": {
+        "student": "materials/2kyu_reading_L02_student.pdf",
+        "teacher": "materials/2kyu_reading_L02_teacher.pdf",
+        "answer": "materials/2kyu_reading_L02_answer.pdf"
+      }
+    },
+    {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L03",
+      "title": "長文語句空所補充6問",
+      "files": {
+        "student": "materials/2kyu_reading_L03_student.pdf",
+        "teacher": "materials/2kyu_reading_L03_teacher.pdf",
+        "answer": "materials/2kyu_reading_L03_answer.pdf"
+      }
+    },
+    {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L04",
+      "title": "長文内容一致選択8問",
+      "files": {
+        "student": "materials/2kyu_reading_L04_student.pdf",
+        "teacher": "materials/2kyu_reading_L04_teacher.pdf",
+        "answer": "materials/2kyu_reading_L04_answer.pdf"
+      }
+    },
+    {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "意見論述",
+      "icon": "pen",
+      "lessonNo": "L01",
+      "title": "在宅勤務",
+      "files": {
+        "student": "materials/2kyu_opinion_L01_student.pdf",
+        "teacher": "materials/2kyu_opinion_L01_teacher.pdf",
+        "answer": "materials/2kyu_opinion_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "筆記模試",
+      "icon": "book",
+      "lessonNo": "M01",
+      "title": "リーディング31問",
+      "files": {
+        "student": "materials/2kyu_mock_M01_student.pdf",
+        "teacher": "materials/2kyu_mock_M01_teacher.pdf",
+        "answer": "materials/2kyu_mock_M01_answer.pdf"
+      }
+    },
+    {
+      "grade": "2級",
+      "gradeOrder": 2,
+      "section": "要約",
+      "icon": "pen",
+      "lessonNo": "L01",
+      "title": "リモートワークと地方",
+      "files": {
+        "student": "materials/2kyu_summary_L01_student.pdf",
+        "teacher": "materials/2kyu_summary_L01_teacher.pdf",
+        "answer": "materials/2kyu_summary_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級",
+      "gradeOrder": 4,
+      "section": "Eメール",
+      "icon": "mail",
+      "lessonNo": "L01",
+      "title": "地域フードシェア",
+      "files": {
+        "student": "materials/pre2kyu_email_L01_student.pdf",
+        "teacher": "materials/pre2kyu_email_L01_teacher.pdf",
+        "answer": "materials/pre2kyu_email_L01_answer.pdf"
+      }
+    },
+    {
       "grade": "準2級",
       "gradeOrder": 4,
       "section": "リーディング",
@@ -27,6 +118,19 @@
       }
     },
     {
+      "grade": "準2級",
+      "gradeOrder": 4,
+      "section": "意見論述",
+      "icon": "pen",
+      "lessonNo": "L01",
+      "title": "食品ロス",
+      "files": {
+        "student": "materials/pre2kyu_opinion_L01_student.pdf",
+        "teacher": "materials/pre2kyu_opinion_L01_teacher.pdf",
+        "answer": "materials/pre2kyu_opinion_L01_answer.pdf"
+      }
+    },
+    {
       "grade": "3級",
       "gradeOrder": 5,
       "section": "Eメール",
@@ -37,6 +141,19 @@
         "student": "materials/3kyu_email_L01_student.pdf",
         "teacher": "materials/3kyu_email_L01_teacher.pdf",
         "answer": "materials/3kyu_email_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "Eメール",
+      "icon": "mail",
+      "lessonNo": "L02",
+      "title": "週末のフリーマーケット",
+      "files": {
+        "student": "materials/3kyu_email_L02_student.pdf",
+        "teacher": "materials/3kyu_email_L02_teacher.pdf",
+        "answer": "materials/3kyu_email_L02_answer.pdf"
       }
     },
     {
@@ -81,6 +198,32 @@
     {
       "grade": "3級",
       "gradeOrder": 5,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L04",
+      "title": "掲示案内とEメール読解",
+      "files": {
+        "student": "materials/3kyu_reading_L04_student.pdf",
+        "teacher": "materials/3kyu_reading_L04_teacher.pdf",
+        "answer": "materials/3kyu_reading_L04_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L05",
+      "title": "短文と会話文空所補充",
+      "files": {
+        "student": "materials/3kyu_reading_L05_student.pdf",
+        "teacher": "materials/3kyu_reading_L05_teacher.pdf",
+        "answer": "materials/3kyu_reading_L05_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
       "section": "意見論述",
       "icon": "pen",
       "lessonNo": "L01",
@@ -89,6 +232,32 @@
         "student": "materials/3kyu_opinion_L01_student.pdf",
         "teacher": "materials/3kyu_opinion_L01_teacher.pdf",
         "answer": "materials/3kyu_opinion_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "意見論述",
+      "icon": "pen",
+      "lessonNo": "L02",
+      "title": "毎日の家事手伝い",
+      "files": {
+        "student": "materials/3kyu_opinion_L02_student.pdf",
+        "teacher": "materials/3kyu_opinion_L02_teacher.pdf",
+        "answer": "materials/3kyu_opinion_L02_answer.pdf"
+      }
+    },
+    {
+      "grade": "3級",
+      "gradeOrder": 5,
+      "section": "筆記模試",
+      "icon": "book",
+      "lessonNo": "M01",
+      "title": "地域と学校生活",
+      "files": {
+        "student": "materials/3kyu_mock_M01_student.pdf",
+        "teacher": "materials/3kyu_mock_M01_teacher.pdf",
+        "answer": "materials/3kyu_mock_M01_answer.pdf"
       }
     }
   ]
