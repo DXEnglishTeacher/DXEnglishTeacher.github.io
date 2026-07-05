@@ -116,10 +116,10 @@
           <span class="text-slate-300">[</span>DX<span class="text-blue-600">English</span>Teacher<span class="text-slate-300">]</span>
         </a>
         <ul id="navLinks" class="hidden items-center gap-9 md:flex">
-          <li><a href="#about" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">About</a></li>
-          <li><a href="#articles" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">記事</a></li>
           <li><a href="#materials" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">級別教材</a></li>
           <li><a href="#prompts" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">プロンプト集</a></li>
+          <li><a href="#articles" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">記事</a></li>
+          <li><a href="#about" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">About</a></li>
           <li><a href="#contact" class="text-sm font-medium text-slate-500 transition hover:text-slate-900">Contact</a></li>
           <li><a href="https://note.com/english_dx" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/30">Noteを読む</a></li>
         </ul>
@@ -132,10 +132,10 @@
     </div>
     <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white/95 backdrop-blur md:hidden">
       <div class="flex flex-col gap-1 px-6 py-4">
-        <a href="#about" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">About</a>
-        <a href="#articles" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">記事</a>
         <a href="#materials" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">級別教材</a>
         <a href="#prompts" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">プロンプト集</a>
+        <a href="#articles" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">記事</a>
+        <a href="#about" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">About</a>
         <a href="#contact" class="rounded-lg px-3 py-2.5 font-medium text-slate-600 hover:bg-slate-50">Contact</a>
         <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="mt-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-center font-bold text-white">Noteを読む</a>
       </div>
@@ -162,18 +162,21 @@
           成功も失敗も、現場のリアルな記録を発信しています。
         </p>
         <div class="reveal mt-9 flex flex-wrap gap-3.5" style="--d:.24s">
-          <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/35">
-            記事を読む <svg class="ico h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg>
+          <a href="#materials" class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-600/35">
+            無料ワークシートを見る <svg class="ico h-4 w-4 transition group-hover:translate-y-0.5"><use href="#i-book"/></svg>
           </a>
-          <a href="#about" class="inline-flex items-center rounded-full border border-slate-200 bg-white px-7 py-3.5 font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
-            プロフィールを見る
+          <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+            Noteで記事を読む <svg class="ico h-4 w-4 transition group-hover:translate-x-1"><use href="#i-arrow"/></svg>
           </a>
         </div>
-        <div class="reveal mt-8 flex flex-wrap gap-2" style="--d:.32s">
-          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#英語教育</span>
-          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#AI活用</span>
-          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#DX推進</span>
-          <span class="rounded-full border border-slate-200 px-3.5 py-1.5 text-[13px] font-medium text-slate-500">#iPad授業</span>
+        <div class="reveal mt-9" style="--d:.32s">
+          <div class="mb-2.5 text-[13px] font-semibold text-slate-400">級から探す</div>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-jump-grade="3級" class="grade-jump inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2 text-sm font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100">3級</button>
+            <button type="button" data-jump-grade="準2級" class="grade-jump inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2 text-sm font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100">準2級</button>
+            <button type="button" data-jump-grade="準2級プラス" class="grade-jump inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2 text-sm font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100">準2級プラス</button>
+            <button type="button" data-jump-grade="2級" class="grade-jump inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2 text-sm font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100">2級</button>
+          </div>
         </div>
       </div>
 
@@ -197,7 +200,7 @@
   <section id="stats" class="border-y border-slate-100 bg-slate-50/70">
     <div class="max-w-container mx-auto grid grid-cols-2 gap-px px-6 py-4 md:grid-cols-4">
       <div class="px-4 py-8 text-center">
-        <div id="statPosts" class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="16">0</div>
+        <div id="statPosts" class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="17">0</div>
         <div class="mt-1 text-sm text-slate-400">投稿記事</div>
       </div>
       <div class="px-4 py-8 text-center">
@@ -215,10 +218,54 @@
     </div>
   </section>
 
-  <!-- ░░ About ░░ -->
-  <section id="about" class="mx-auto max-w-container px-6 py-24 md:py-32">
+  <!-- ░░ 級別英語教材 ░░ -->
+  <section id="materials" class="mx-auto max-w-container px-6 py-24 md:py-32">
     <div class="reveal mb-14">
-      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">01 — About</div>
+      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">01 — Materials</div>
+      <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">級別英語教材</h2>
+      <p class="mt-4 max-w-2xl text-slate-500">授業・自学で使えるオリジナルワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
+      <p class="mt-3 max-w-3xl text-xs leading-relaxed text-slate-400">掲載教材は独自に制作した学習用資料です。このコンテンツは、公益財団法人 日本英語検定協会の承認や推奨、その他の検討を受けたものではありません。</p>
+    </div>
+    <div id="materialFilter" class="reveal mb-9 flex flex-wrap gap-2"></div>
+    <div id="materialGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="col-span-full flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
+    </div>
+  </section>
+
+  <!-- ░░ プロンプト集 ░░ -->
+  <section id="prompts" class="bg-slate-50/70 py-24 md:py-32">
+    <div class="mx-auto max-w-container px-6">
+      <div class="reveal mb-14">
+        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">02 — Prompts</div>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">AIプロンプト集</h2>
+        <p class="mt-4 max-w-2xl text-slate-500">授業準備・教材作成・校務にそのまま使えるプロンプト。クリックでコピーできます。</p>
+      </div>
+      <div id="promptSection" class="space-y-12"></div>
+    </div>
+  </section>
+
+  <!-- ░░ Articles ░░ -->
+  <section id="articles" class="py-24 md:py-32">
+    <div class="mx-auto max-w-container px-6">
+      <div class="reveal mb-14">
+        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">03 — Articles</div>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">最近の記事</h2>
+        <p class="mt-4 text-slate-500">Noteで更新中。有料記事もあります。</p>
+      </div>
+      <div id="articlesWrap">
+        <div class="flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
+      </div>
+      <div class="reveal mt-12 text-center">
+        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-3.5 font-bold text-slate-700 transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-600 hover:shadow-md">すべての記事を見る <svg class="ico h-4 w-4"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ About ░░ -->
+  <section id="about" class="bg-slate-50/70 py-24 md:py-32">
+    <div class="mx-auto max-w-container px-6">
+    <div class="reveal mb-14">
+      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">04 — About</div>
       <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">私について</h2>
     </div>
     <div class="grid gap-14 lg:grid-cols-[1fr_380px]">
@@ -269,48 +316,6 @@
         </div>
       </aside>
     </div>
-  </section>
-
-  <!-- ░░ Articles ░░ -->
-  <section id="articles" class="bg-slate-50/70 py-24 md:py-32">
-    <div class="mx-auto max-w-container px-6">
-      <div class="reveal mb-14">
-        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">02 — Articles</div>
-        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">最近の記事</h2>
-        <p class="mt-4 text-slate-500">Noteで更新中。有料記事もあります。</p>
-      </div>
-      <div id="articlesWrap">
-        <div class="flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
-      </div>
-      <div class="reveal mt-12 text-center">
-        <a href="https://note.com/english_dx" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-3.5 font-bold text-slate-700 transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-600 hover:shadow-md">すべての記事を見る <svg class="ico h-4 w-4"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ░░ 級別英語教材 ░░ -->
-  <section id="materials" class="mx-auto max-w-container px-6 py-24 md:py-32">
-    <div class="reveal mb-14">
-      <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">03 — Materials</div>
-      <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">級別英語教材</h2>
-      <p class="mt-4 max-w-2xl text-slate-500">授業・自学で使えるオリジナルワークシートを無料配布。PDFをダウンロードしてご活用ください。</p>
-      <p class="mt-3 max-w-3xl text-xs leading-relaxed text-slate-400">掲載教材は独自に制作した学習用資料です。特定の試験実施団体による作成・承認・推奨を受けた公式教材ではありません。</p>
-    </div>
-    <div id="materialFilter" class="reveal mb-9 flex flex-wrap gap-2"></div>
-    <div id="materialGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="col-span-full flex justify-center gap-2 py-16"><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.15s"></span><span class="h-2.5 w-2.5 animate-bounce rounded-full bg-blue-400" style="animation-delay:.3s"></span></div>
-    </div>
-  </section>
-
-  <!-- ░░ プロンプト集 ░░ -->
-  <section id="prompts" class="bg-slate-50/70 py-24 md:py-32">
-    <div class="mx-auto max-w-container px-6">
-      <div class="reveal mb-14">
-        <div class="font-display text-sm font-bold uppercase tracking-[0.18em] text-blue-600">04 — Prompts</div>
-        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">AIプロンプト集</h2>
-        <p class="mt-4 max-w-2xl text-slate-500">授業準備・教材作成・校務にそのまま使えるプロンプト。クリックでコピーできます。</p>
-      </div>
-      <div id="promptSection" class="space-y-12"></div>
     </div>
   </section>
 
@@ -356,6 +361,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- トップへ戻る -->
+  <button id="toTop" class="fixed bottom-6 right-6 z-50 hidden h-12 w-12 place-items-center rounded-full bg-slate-900/80 text-white shadow-xl shadow-slate-400/30 backdrop-blur transition hover:-translate-y-1 hover:bg-blue-600" aria-label="トップへ戻る">
+    <svg class="ico h-5 w-5 -rotate-90"><use href="#i-arrow"/></svg>
+  </button>
 
 <script>
 // ── Navbar：スクロールで背景 ──
@@ -426,6 +436,7 @@ function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;'
 
 // ── 記事（Note RSS + フォールバック）──
 const STATIC_ARTICLES = [
+  { title:'2級か、準2級プラスか。迷ったときの選び方', url:'https://note.com/english_dx/n/n84919eaa76d2', img:'https://assets.st-note.com/production/uploads/images/291575941/rectangle_large_type_2_b504d794e30b7544b1fbbe85505047c8.png?width=800', date:'2026/07/05' },
   { title:'便利なはずのソフトを、誰も使わなかった話', url:'https://note.com/english_dx/n/nec438f339b59', img:'https://assets.st-note.com/production/uploads/images/291125285/rectangle_large_type_2_00b8d98caf0ec50c50d5f983f784e3c7.png?width=800', date:'2026/07/03' },
   { title:'AIに授業準備を頼む前に。「生徒像」を伝えていますか？', url:'https://note.com/english_dx/n/n4af6ab327760', img:'https://assets.st-note.com/production/uploads/images/290109738/rectangle_large_type_2_c2a9e1af72abc26325d7262c463163db.png?width=800', date:'2026/06/30' },
   { title:'英検の要約問題集、少なくないですか？　AIで解決した話', url:'https://note.com/english_dx/n/ne0f7ff64a7b3', img:'https://assets.st-note.com/production/uploads/images/289323765/rectangle_large_type_2_d067aaf1315cffdb0d371bd427d64761.png?width=800', date:'2026/06/27' },
@@ -519,9 +530,10 @@ async function loadMaterials() {
 
     // 級フィルター（教材が複数級になったら表示）
     const grades = [...new Map(materials.map(m => [m.grade, m.gradeOrder ?? 99])).entries()].sort((a,b)=>a[1]-b[1]).map(e=>e[0]);
+    const countOf = g => g === 'all' ? materials.length : materials.filter(m => m.grade === g).length;
     const filter = document.getElementById('materialFilter');
     if (grades.length > 1) {
-      const mkPill = (label, val, active) => `<button class="mat-pill rounded-full px-4 py-2 text-sm font-semibold transition ${active?'bg-blue-600 text-white':'border border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-600'}" data-grade="${esc(val)}">${esc(label)}</button>`;
+      const mkPill = (label, val, active) => `<button class="mat-pill inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition ${active?'bg-blue-600 text-white':'border border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-600'}" data-grade="${esc(val)}">${esc(label)}<span class="rounded-full bg-black/10 px-1.5 text-xs">${countOf(val)}</span></button>`;
       filter.innerHTML = mkPill('すべて','all',true) + grades.map(g=>mkPill(g,g,false)).join('');
       filter.addEventListener('click', (e) => {
         const pill = e.target.closest('.mat-pill'); if (!pill) return;
@@ -543,6 +555,29 @@ async function loadMaterials() {
   }
 }
 loadMaterials();
+
+// ── ヒーローの級ボタン → 教材へスクロール＋フィルター適用 ──
+document.querySelectorAll('.grade-jump').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('materials').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const g = btn.dataset.jumpGrade;
+    const tryClick = (n = 0) => {
+      const pill = [...document.querySelectorAll('.mat-pill')].find(p => p.dataset.grade === g);
+      if (pill) pill.click();
+      else if (n < 20) setTimeout(() => tryClick(n + 1), 150);
+    };
+    tryClick();
+  });
+});
+
+// ── トップへ戻る ──
+const toTop = document.getElementById('toTop');
+addEventListener('scroll', () => {
+  const show = scrollY > 600;
+  toTop.classList.toggle('hidden', !show);
+  toTop.classList.toggle('grid', show);
+}, { passive: true });
+toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
 // ── プロンプト集（prompts.js）──
 const I_KEY = { cap: 'i-cap', pen: 'i-pen', folder: 'i-folder', cpu: 'i-cpu', book: 'i-book' };

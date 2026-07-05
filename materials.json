@@ -92,6 +92,97 @@
       }
     },
     {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L01",
+      "title": "制服リユース活動",
+      "files": {
+        "student": "materials/pre2plus_reading_L01_student.pdf",
+        "teacher": "materials/pre2plus_reading_L01_teacher.pdf",
+        "answer": "materials/pre2plus_reading_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L02",
+      "title": "短文空所補充17問",
+      "files": {
+        "student": "materials/pre2plus_reading_L02_student.pdf",
+        "teacher": "materials/pre2plus_reading_L02_teacher.pdf",
+        "answer": "materials/pre2plus_reading_L02_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L03",
+      "title": "長文語句空所補充6問",
+      "files": {
+        "student": "materials/pre2plus_reading_L03_student.pdf",
+        "teacher": "materials/pre2plus_reading_L03_teacher.pdf",
+        "answer": "materials/pre2plus_reading_L03_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "リーディング",
+      "icon": "book",
+      "lessonNo": "L04",
+      "title": "長文内容一致選択8問",
+      "files": {
+        "student": "materials/pre2plus_reading_L04_student.pdf",
+        "teacher": "materials/pre2plus_reading_L04_teacher.pdf",
+        "answer": "materials/pre2plus_reading_L04_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "意見論述",
+      "icon": "pen",
+      "lessonNo": "L01",
+      "title": "地域ボランティア",
+      "files": {
+        "student": "materials/pre2plus_opinion_L01_student.pdf",
+        "teacher": "materials/pre2plus_opinion_L01_teacher.pdf",
+        "answer": "materials/pre2plus_opinion_L01_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "筆記模試",
+      "icon": "book",
+      "lessonNo": "M01",
+      "title": "リーディング31問",
+      "files": {
+        "student": "materials/pre2plus_mock_M01_student.pdf",
+        "teacher": "materials/pre2plus_mock_M01_teacher.pdf",
+        "answer": "materials/pre2plus_mock_M01_answer.pdf"
+      }
+    },
+    {
+      "grade": "準2級プラス",
+      "gradeOrder": 3,
+      "section": "要約",
+      "icon": "pen",
+      "lessonNo": "L01",
+      "title": "給水スポット",
+      "files": {
+        "student": "materials/pre2plus_summary_L01_student.pdf",
+        "teacher": "materials/pre2plus_summary_L01_teacher.pdf",
+        "answer": "materials/pre2plus_summary_L01_answer.pdf"
+      }
+    },
+    {
       "grade": "準2級",
       "gradeOrder": 4,
       "section": "Eメール",
