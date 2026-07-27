@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>班分けメーカー | 英語教員のDX日誌</title>
+<meta name="description" content="名前を入れるだけで班分けが完了。ドラッグで微調整、CSV・画像でも出力できる無料ツールです。データはブラウザ内で処理され、外部に送信されません。">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="班分けメーカー | 英語教員のDX日誌">
+<meta property="og:description" content="名前を入れるだけで班分けが完了。ドラッグで微調整、CSV・画像でも出力できる無料ツールです。">
+<meta property="og:url" content="https://dxenglishteacher.github.io/tools/group-maker/">
+<meta property="og:image" content="https://dxenglishteacher.github.io/profile.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-594N37HQVV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-594N37HQVV');
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --accent:#3b6ef6;
+    --accent-light:#eaf0ff;
+    --leader:#f5a623;
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --border:#e1e4ec;
+    --text:#2b2d3a;
+    --muted:#8a8fa3;
+    --danger:#e5484d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Hiragino Sans","Yu Gothic",-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+  header{
+    background:var(--card);
+    padding:20px 24px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  header h1{
+    margin:0;
+    font-size:20px;
+  }
+  .container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:20px;
+  }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:16px;
+  }
+  .panel h2{
+    font-size:14px;
+    margin:0 0 12px;
+    color:var(--muted);
+    font-weight:600;
+    letter-spacing:.03em;
+  }
+  .row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  input[type=text], input[type=number], textarea{
+    font-family:inherit;
+    font-size:14px;
+    padding:8px 10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:#fff;
+    color:var(--text);
+  }
+  textarea{
+    width:100%;
+    min-height:70px;
+    resize:vertical;
+  }
+  button{
+    font-family:inherit;
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:#fff;
+    cursor:pointer;
+    color:var(--text);
+    white-space:nowrap;
+  }
+  button:hover{ background:#f0f1f6; }
+  button.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  button.primary:hover{ opacity:.9; background:var(--accent); }
+  button.danger{ color:var(--danger); }
+  button:disabled{ opacity:.4; cursor:not-allowed; }
+
+  .pool-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    min-height:44px;
+    padding:8px;
+    border:2px dashed var(--border);
+    border-radius:10px;
+  }
+  .pool-list.dragover{ border-color:var(--accent); background:var(--accent-light); }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:6px 10px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:grab;
+    font-size:13px;
+    user-select:none;
+  }
+  .card.leader{ border-color:var(--leader); background:#fff8ec; }
+  .card.selected{ outline:2px solid var(--accent); }
+  .card .star{
+    cursor:pointer;
+    color:var(--muted);
+    font-size:14px;
+  }
+  .card.leader .star{ color:var(--leader); }
+  .card .del{
+    cursor:pointer;
+    color:var(--muted);
+    font-size:12px;
+    margin-left:2px;
+  }
+  .card .del:hover{ color:var(--danger); }
+
+  .groups-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:14px;
+  }
+  .group-col{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px;
+    min-height:140px;
+  }
+  .group-col-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:8px;
+  }
+  .group-name{
+    font-weight:700;
+    font-size:15px;
+    border:none;
+    background:transparent;
+    width:100%;
+    padding:2px 4px;
+    border-radius:6px;
+  }
+  .group-name:focus{ background:var(--accent-light); outline:none; }
+  .group-count{
+    font-size:12px;
+    color:var(--muted);
+    white-space:nowrap;
+    margin-left:6px;
+  }
+  .group-drop{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-height:80px;
+    border-radius:8px;
+  }
+  .group-drop.dragover{ background:var(--accent-light); }
+  .group-drop .card{ width:100%; }
+
+  .hint{ font-size:12px; color:var(--muted); }
+
+  @media print{
+    header, .panel, .no-print{ display:none !important; }
+    body{ background:#fff; }
+    .container{ padding:0; max-width:none; }
+    .groups-grid{ gap:10px; }
+    .group-col{ border:1px solid #333; break-inside:avoid; }
+    .card{ border:1px solid #999; cursor:default; }
+    .star, .del{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+    <a href="../../" class="no-print" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap;">← サイトに戻る</a>
+    <h1>班分けメーカー</h1>
+  </div>
+  <div class="row no-print">
+    <button id="btnSave">保存</button>
+    <button id="btnLoad">読み込み</button>
+    <button id="btnExport">JSON書き出し</button>
+    <button id="btnImport">JSON読み込み</button>
+    <input type="file" id="fileImport" accept="application/json" style="display:none">
+    <button id="btnCsv">CSV出力</button>
+    <button id="btnPrint">印刷</button>
+    <button id="btnImage">画像として保存</button>
+    <button id="btnReset" class="danger">全リセット</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="panel no-print">
+    <h2>人の登録</h2>
+    <div class="row" style="margin-bottom:10px;">
+      <input type="text" id="nameInput" placeholder="名前を入力してEnter" style="flex:1;min-width:160px;">
+      <button id="btnAddOne" class="primary">追加</button>
+    </div>
+    <textarea id="bulkInput" placeholder="複数人をまとめて登録する場合はここに改行区切りで貼り付け&#10;例）&#10;山田太郎&#10;佐藤花子"></textarea>
+    <div class="row" style="margin-top:8px;">
+      <button id="btnBulkAdd" class="primary">一括登録</button>
+      <span class="hint">★をクリックするとリーダーに設定できます（リーダーは自動振り分け時に必ずいずれかのグループへ配置されます）</span>
+    </div>
+  </div>
+
+  <div class="panel no-print">
+    <h2>未割り当て</h2>
+    <div class="pool-list" id="pool" data-group="-1"></div>
+  </div>
+
+  <div class="panel no-print">
+    <h2>グループ設定</h2>
+    <div class="row">
+      <label>グループ数：</label>
+      <input type="number" id="groupCountInput" min="1" max="20" value="4" style="width:70px;">
+      <button id="btnApplyGroupCount">適用</button>
+      <button id="btnAutoAssign" class="primary">自動振り分け</button>
+      <span class="hint">リーダーを優先的に各グループへ配置してから、残りを均等にランダム配置します</span>
+    </div>
+  </div>
+
+  <div class="groups-grid" id="groupsGrid"></div>
+
+</div>
+
+<script>
+const STORAGE_KEY = "group-app-state-v1";
+
+let state = {
+  people: [],       // {id, name, leader}
+  groupCount: 4,
+  groupNames: [],    // ["グループ1", ...]
+  assignment: {}     // personId -> groupIndex (number) or -1 for unassigned
+};
+
+let selectedPersonId = null;
+let idCounter = 1;
+
+function uid(){ return "p" + (idCounter++) + "_" + Date.now().toString(36); }
+
+function defaultGroupNames(count, existing){
+  const names = [];
+  for(let i=0;i<count;i++){
+    names.push(existing && existing[i] ? existing[i] : ("グループ" + (i+1)));
+  }
+  return names;
+}
+
+function ensureGroupNamesLength(){
+  state.groupNames = defaultGroupNames(state.groupCount, state.groupNames);
+}
+
+function addPerson(name){
+  name = name.trim();
+  if(!name) return;
+  const id = uid();
+  state.people.push({id, name, leader:false});
+  state.assignment[id] = -1;
+}
+
+function removePerson(id){
+  state.people = state.people.filter(p => p.id !== id);
+  delete state.assignment[id];
+  if(selectedPersonId === id) selectedPersonId = null;
+}
+
+function toggleLeader(id){
+  const p = state.people.find(p => p.id === id);
+  if(p) p.leader = !p.leader;
+}
+
+function render(){
+  ensureGroupNamesLength();
+
+  // pool
+  const pool = document.getElementById("pool");
+  pool.innerHTML = "";
+  state.people.filter(p => state.assignment[p.id] === -1).forEach(p => {
+    pool.appendChild(makeCard(p));
+  });
+
+  // groups
+  const grid = document.getElementById("groupsGrid");
+  grid.innerHTML = "";
+  for(let g=0; g<state.groupCount; g++){
+    const col = document.createElement("div");
+    col.className = "group-col";
+
+    const head = document.createElement("div");
+    head.className = "group-col-head";
+    const nameInput = document.createElement("input");
+    nameInput.className = "group-name";
+    nameInput.value = state.groupNames[g];
+    nameInput.addEventListener("input", () => {
+      state.groupNames[g] = nameInput.value;
+    });
+    nameInput.addEventListener("blur", persist);
+    const countSpan = document.createElement("span");
+    countSpan.className = "group-count";
+    const members = state.people.filter(p => state.assignment[p.id] === g);
+    countSpan.textContent = members.length + "人";
+    head.appendChild(nameInput);
+    head.appendChild(countSpan);
+    col.appendChild(head);
+
+    const drop = document.createElement("div");
+    drop.className = "group-drop";
+    drop.dataset.group = g;
+    members.forEach(p => drop.appendChild(makeCard(p)));
+    col.appendChild(drop);
+
+    grid.appendChild(col);
+    setupDropZone(drop);
+  }
+
+  setupDropZone(pool);
+  persist();
+}
+
+function makeCard(p){
+  const card = document.createElement("div");
+  card.className = "card" + (p.leader ? " leader" : "") + (selectedPersonId === p.id ? " selected" : "");
+  card.draggable = true;
+  card.dataset.id = p.id;
+
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = p.leader ? "★" : "☆";
+  star.title = "リーダー設定";
+  star.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleLeader(p.id);
+    render();
+  });
+
+  const label = document.createElement("span");
+  label.textContent = p.name;
+
+  const del = document.createElement("span");
+  del.className = "del";
+  del.textContent = "×";
+  del.title = "削除";
+  del.addEventListener("click", (e) => {
+    e.stopPropagation();
+    removePerson(p.id);
+    render();
+  });
+
+  card.appendChild(star);
+  card.appendChild(label);
+  card.appendChild(del);
+
+  // click-to-select / click-to-move (touch-friendly fallback)
+  card.addEventListener("click", () => {
+    if(selectedPersonId === p.id){
+      selectedPersonId = null;
+    } else {
+      selectedPersonId = p.id;
+    }
+    render();
+  });
+
+  // drag and drop
+  card.addEventListener("dragstart", (e) => {
+    e.dataTransfer.setData("text/plain", p.id);
+    e.dataTransfer.effectAllowed = "move";
+  });
+
+  return card;
+}
+
+function setupDropZone(el){
+  el.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    el.classList.add("dragover");
+  });
+  el.addEventListener("dragleave", () => {
+    el.classList.remove("dragover");
+  });
+  el.addEventListener("drop", (e) => {
+    e.preventDefault();
+    el.classList.remove("dragover");
+    const id = e.dataTransfer.getData("text/plain");
+    const g = parseInt(el.dataset.group, 10);
+    if(id && state.assignment.hasOwnProperty(id)){
+      state.assignment[id] = g;
+      render();
+    }
+  });
+  // click target for touch-friendly move
+  el.addEventListener("click", (e) => {
+    if(e.target === el && selectedPersonId){
+      const g = parseInt(el.dataset.group, 10);
+      state.assignment[selectedPersonId] = g;
+      selectedPersonId = null;
+      render();
+    }
+  });
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function autoAssign(){
+  if(state.groupCount < 1) return;
+  const counts = new Array(state.groupCount).fill(0);
+  const leaders = shuffle(state.people.filter(p => p.leader));
+  const others = shuffle(state.people.filter(p => !p.leader));
+
+  function placeGreedy(p){
+    let minIdx = 0;
+    for(let i=1;i<counts.length;i++){
+      if(counts[i] < counts[minIdx]) minIdx = i;
+    }
+    state.assignment[p.id] = minIdx;
+    counts[minIdx]++;
+  }
+
+  leaders.forEach(placeGreedy);
+  others.forEach(placeGreedy);
+  render();
+}
+
+function persist(){
+  localStorage.setItem(STORAGE_KEY + "-draft", JSON.stringify(state));
+}
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  alert("保存しました。");
+}
+
+function loadState(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw){
+    alert("保存されたデータがありません。");
+    return;
+  }
+  applyLoadedState(raw);
+}
+
+function applyLoadedState(raw){
+  try{
+    const loaded = JSON.parse(raw);
+    state = loaded;
+    // recompute idCounter to avoid collisions
+    idCounter = state.people.length + 1;
+    selectedPersonId = null;
+    render();
+  }catch(err){
+    alert("データの読み込みに失敗しました。");
+  }
+}
+
+function exportJSON(){
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "group-data.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function csvEscape(field){
+  const str = String(field);
+  if(/[",\n]/.test(str)){
+    return '"' + str.replace(/"/g, '""') + '"';
+  }
+  return str;
+}
+
+function exportCSV(){
+  ensureGroupNamesLength();
+  const rows = [["グループ", "名前", "リーダー"]];
+  for(let g=0; g<state.groupCount; g++){
+    state.people
+      .filter(p => state.assignment[p.id] === g)
+      .forEach(p => rows.push([state.groupNames[g], p.name, p.leader ? "○" : ""]));
+  }
+  state.people
+    .filter(p => state.assignment[p.id] === -1)
+    .forEach(p => rows.push(["未割り当て", p.name, p.leader ? "○" : ""]));
+
+  const csv = rows.map(row => row.map(csvEscape).join(",")).join("\r\n");
+  const blob = new Blob(["﻿" + csv], {type:"text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "group-result.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importJSON(file){
+  const reader = new FileReader();
+  reader.onload = () => applyLoadedState(reader.result);
+  reader.readAsText(file);
+}
+
+function resetAll(){
+  if(!confirm("すべてのデータを削除します。よろしいですか？")) return;
+  state = { people: [], groupCount: state.groupCount || 4, groupNames: [], assignment: {} };
+  selectedPersonId = null;
+  render();
+}
+
+// event bindings
+document.getElementById("btnAddOne").addEventListener("click", () => {
+  const input = document.getElementById("nameInput");
+  addPerson(input.value);
+  input.value = "";
+  input.focus();
+  render();
+});
+document.getElementById("nameInput").addEventListener("keydown", (e) => {
+  if(e.key === "Enter"){
+    const input = e.target;
+    addPerson(input.value);
+    input.value = "";
+    render();
+  }
+});
+document.getElementById("btnBulkAdd").addEventListener("click", () => {
+  const textarea = document.getElementById("bulkInput");
+  textarea.value.split(/\r?\n/).forEach(line => addPerson(line));
+  textarea.value = "";
+  render();
+});
+document.getElementById("btnApplyGroupCount").addEventListener("click", () => {
+  const val = parseInt(document.getElementById("groupCountInput").value, 10);
+  if(isNaN(val) || val < 1) return;
+  const oldCount = state.groupCount;
+  state.groupCount = val;
+  ensureGroupNamesLength();
+  // people in removed groups go back to pool
+  if(val < oldCount){
+    Object.keys(state.assignment).forEach(id => {
+      if(state.assignment[id] >= val) state.assignment[id] = -1;
+    });
+  }
+  render();
+});
+document.getElementById("btnAutoAssign").addEventListener("click", autoAssign);
+document.getElementById("btnSave").addEventListener("click", saveState);
+document.getElementById("btnLoad").addEventListener("click", loadState);
+document.getElementById("btnExport").addEventListener("click", exportJSON);
+document.getElementById("btnCsv").addEventListener("click", exportCSV);
+document.getElementById("btnImport").addEventListener("click", () => {
+  document.getElementById("fileImport").click();
+});
+document.getElementById("fileImport").addEventListener("change", (e) => {
+  if(e.target.files[0]) importJSON(e.target.files[0]);
+  e.target.value = "";
+});
+document.getElementById("btnPrint").addEventListener("click", () => window.print());
+document.getElementById("btnImage").addEventListener("click", () => {
+  html2canvas(document.getElementById("groupsGrid")).then(canvas => {
+    const a = document.createElement("a");
+    a.href = canvas.toDataURL("image/png");
+    a.download = "group-result.png";
+    a.click();
+  });
+});
+document.getElementById("btnReset").addEventListener("click", resetAll);
+
+// init
+(function init(){
+  const draft = localStorage.getItem(STORAGE_KEY + "-draft");
+  if(draft){
+    try{
+      state = JSON.parse(draft);
+      idCounter = state.people.length + 1;
+    }catch(err){ /* ignore */ }
+  }
+  document.getElementById("groupCountInput").value = state.groupCount || 4;
+  render();
+})();
+</script>
+
+</body>
+</html>
