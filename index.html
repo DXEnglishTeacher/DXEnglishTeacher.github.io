@@ -200,7 +200,7 @@
   <section id="stats" class="border-y border-slate-100 bg-slate-50/70">
     <div class="max-w-container mx-auto grid grid-cols-2 gap-px px-6 py-4 md:grid-cols-4">
       <div class="px-4 py-8 text-center">
-        <div id="statPosts" class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="19">0</div>
+        <div id="statPosts" class="stat-num font-display text-5xl font-extrabold tracking-tight text-slate-900" data-target="21">0</div>
         <div class="mt-1 text-sm text-slate-400">投稿記事</div>
       </div>
       <div class="px-4 py-8 text-center">
@@ -436,12 +436,12 @@ function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;'
 
 // ── 記事（Note RSS + フォールバック）──
 const STATIC_ARTICLES = [
+  { title:'「班決めで消耗する」を5分減らす。無料の班分けツールを作りました', url:'https://note.com/english_dx/n/n32cfe0d86dbb', img:'https://assets.st-note.com/production/uploads/images/297908600/rectangle_large_type_2_a4b5dc11bbe2431db8f17d6d30e5bff3.png?width=800', date:'2026/07/27' },
+  { title:'伸びるために、戻る。高校英語へ進むための学び直し教材を作っています', url:'https://note.com/english_dx/n/nce706db164aa', img:'https://assets.st-note.com/production/uploads/images/296065569/rectangle_large_type_2_eb1f19d8703daac625519755a44d5ba9.png?width=800', date:'2026/07/20' },
   { title:'意見論述、AI添削で直しすぎになっていませんか？', url:'https://note.com/english_dx/n/nb720e1ae3281', img:'https://assets.st-note.com/production/uploads/images/293595048/rectangle_large_type_2_4eb77dc255d9739f6955503815ef17f5.png?width=800', date:'2026/07/12' },
   { title:'同じ生徒なのに、名前も住所も違う。データがバラバラだった話', url:'https://note.com/english_dx/n/n9e3748c98dba', img:'https://assets.st-note.com/production/uploads/images/293200304/rectangle_large_type_2_517f4993c1c1d74a6ee68e26a60aa032.png?width=800', date:'2026/07/10' },
   { title:'高校上級から高校卒業レベルへ。教材選びの考え方', url:'https://note.com/english_dx/n/n84919eaa76d2', img:'https://assets.st-note.com/production/uploads/images/291575941/rectangle_large_type_2_b504d794e30b7544b1fbbe85505047c8.png?width=800', date:'2026/07/05' },
   { title:'便利なはずのソフトを、誰も使わなかった話', url:'https://note.com/english_dx/n/nec438f339b59', img:'https://assets.st-note.com/production/uploads/images/291125285/rectangle_large_type_2_00b8d98caf0ec50c50d5f983f784e3c7.png?width=800', date:'2026/07/03' },
-  { title:'AIに授業準備を頼む前に。「生徒像」を伝えていますか？', url:'https://note.com/english_dx/n/n4af6ab327760', img:'https://assets.st-note.com/production/uploads/images/290109738/rectangle_large_type_2_c2a9e1af72abc26325d7262c463163db.png?width=800', date:'2026/06/30' },
-  { title:'要約問題集、少なくないですか？　AIで解決した話', url:'https://note.com/english_dx/n/ne0f7ff64a7b3', img:'https://assets.st-note.com/production/uploads/images/289323765/rectangle_large_type_2_d067aaf1315cffdb0d371bd427d64761.png?width=800', date:'2026/06/27' },
 ];
 
 function articlePlaceholder(i){ return `<div class="absolute inset-0 grid place-items-center bg-gradient-to-br from-slate-100 to-slate-200 font-display text-3xl font-extrabold text-slate-300">0${i+1}</div>`; }
